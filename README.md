@@ -1,6 +1,6 @@
 # Radmir Islamov / Радмир Исламов
 
-Personal website and blog in Russian and English. Built with Astro, TypeScript and Markdown. Static HTML, system fonts, light and dark themes, minimal client-side JavaScript.
+Personal website and blog in Russian and English. Built with Astro, TypeScript and Markdown. Static HTML, locally hosted Literata and Golos Text variable fonts, light and dark themes, minimal client-side JavaScript.
 
 Website: https://therad445.github.io
 
@@ -32,6 +32,8 @@ The deployable output is `dist/`. The checks cover routes, internal links, langu
 - `src/content.config.ts` — validated content schema. `noteTitle` is an optional conversational title; `date` is the note date, not the project completion date.
 - `src/layouts/Layout.astro` — navigation, theme and SEO metadata.
 - `src/styles/global.css` — typography, layout and themes.
+- `src/styles/fonts.css`, `public/fonts/` — local WOFF2 fonts and their SIL Open Font Licences; no third-party font requests.
+- `DESIGN_NOTES.md` — visual references, palette, typography and font provenance.
 - `src/components/LogFlow.astro`, `LogDemo.astro` — a source-grounded data-flow diagram and a labelled browser-only demonstration using synthetic requests.
 - `public/images/` — local portraits, an attributed public-domain historical illustration and the experimental figure. Image provenance is recorded in `SOURCES.md`.
 - `public/data/halfcheetah-summary.csv` — a snapshot of the public experiment data. Regenerate its figure with `python3 scripts/render-figures.py` (optional editorial dependency: Matplotlib; not needed for the Astro build).

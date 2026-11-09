@@ -1,0 +1,15 @@
+/* Local variable fonts: Latin, Cyrillic and extended Cyrillic. See public/fonts/*-OFL.txt. */
+@font-face {
+  font-family: 'Golos Text';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/golos-text.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Literata';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/literata.woff2') format('woff2');
+}

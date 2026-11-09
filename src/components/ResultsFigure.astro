@@ -2,8 +2,10 @@
 import {pick,type Lang} from '../data/site';
 interface Props {lang:Lang}
 const {lang}=Astro.props;
+const alt=pick(lang,'Итоговая награда в HalfCheetah-v5: n=1 — 4354,49; n=3 — 4578,91; n=5 — 764,49. Один seed: 0.','Final return in HalfCheetah-v5: n=1 — 4354.49; n=3 — 4578.91; n=5 — 764.49. A single seed: 0.');
 ---
 <figure class="results-figure">
-  <img src="/images/halfcheetah-results.svg" width="800" height="350" loading="lazy" decoding="async" alt={pick(lang,'Итоговая награда в HalfCheetah-v5: n=1 — 4354,49; n=3 — 4578,91; n=5 — 764,49. Один seed: 0.','Final return in HalfCheetah-v5: n=1 — 4354.49; n=3 — 4578.91; n=5 — 764.49. A single seed: 0.')}/>
+  <img class="chart-light" src="/images/halfcheetah-results.svg" width="800" height="350" loading="lazy" decoding="async" alt={alt}/>
+  <img class="chart-dark" src="/images/halfcheetah-results-dark.svg" width="800" height="350" loading="lazy" decoding="async" alt={alt}/>
   <figcaption>{pick(lang,'Один сохранённый запуск на конфигурацию, seed 0. График показывает результат этого эксперимента, а не устойчивое превосходство метода.','One saved run per configuration, seed 0. This chart describes the experiment, not a reliable advantage of one method.')} <a href="/data/halfcheetah-summary.csv">{pick(lang,'Данные CSV','CSV data')}</a>.</figcaption>
 </figure>

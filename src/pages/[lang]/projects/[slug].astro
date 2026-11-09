@@ -12,7 +12,7 @@ const {Content}=await render(project);
 const title=project.data.noteTitle||project.data.title;
 ---
 <Layout lang={lang} title={title} description={project.data.summary} path={`projects/${project.data.slug}`} type="Article" date={project.data.date}>
-<header class="page-heading"><div class="breadcrumbs"><a href={url(lang,'writing')}>{pick(lang,'Все заметки','All notes')}</a></div><h1>{title}</h1><p class="article-date"><time datetime={project.data.date}>{new Date(project.data.date).toLocaleDateString(lang==='ru'?'ru-RU':'en-GB',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'})}</time> · {pick(lang,'Заметка о проекте','Project note')}</p></header>
+<header class="page-heading"><div class="breadcrumbs"><a href={url(lang,'projects')}>{pick(lang,'Все проекты','All projects')}</a></div><h1>{title}</h1><p class="article-date"><time datetime={project.data.date}>{new Date(project.data.date).toLocaleDateString(lang==='ru'?'ru-RU':'en-GB',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'})}</time> · {pick(lang,'Заметка о проекте','Project note')}</p></header>
 {project.data.slug==='nginx-log-analyzer'&&<LogFlow lang={lang}/>}
 {project.data.slug==='nstep-sac-reproducibility'&&<ResultsFigure lang={lang}/>}
 <article class="prose"><Content/></article>
