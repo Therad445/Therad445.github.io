@@ -45,3 +45,7 @@
 - [n-step SAC](https://github.com/Therad445/nstep-sac-reproducibility): README, src/rl/sac.py, results/halfcheetah_summary.csv. Наличие PDF отчёта проверено, содержимое PDF этим аудитом не читалось.
 - [RAG release benchmark](https://github.com/Therad445/rag-release-regression-benchmark): README, docs/research-plan.md, дерево. Оставлен за пределами портфолио как план.
 
+
+## Обновление контактов
+
+Gmail therad445@gmail.com ранее предоставлен владельцем и добавлен в контакты по его прямому запросу 9 ноября 2026 года. Доставка почты не проверялась.

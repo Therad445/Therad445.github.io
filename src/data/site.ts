@@ -5,7 +5,7 @@ export const pick = <T>(lang: Lang, ru: T, en: T): T => lang === 'ru' ? ru : en;
 export const url = (lang: Lang, path = '') => `/${lang}/${path ? `${path.replace(/^\/+|\/+$/g, '')}/` : ''}`;
 export const person = {
   name: { ru: 'Радмир Исламов', en: 'Radmir Islamov' },
-  email: 'my@radisl.ru', github: 'https://github.com/Therad445',
+  email: 'my@radisl.ru', gmail: 'therad445@gmail.com', github: 'https://github.com/Therad445',
   telegram: 'https://t.me/Rad445',
   summary: {
     ru: 'Инженер программного обеспечения. Надёжность систем, наблюдаемость и прикладной ИИ. Исследования на пересечении машинного обучения и сложных данных.',
