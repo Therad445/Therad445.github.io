@@ -28,6 +28,12 @@ Reading, parsing, analysis and reporting are separate parts of the code. That ma
 
 Source code, tests, documentation and infrastructure files. This is an educational engineering project. I do not quote production throughput here; that would require separate, reproducible measurements.
 
+## Engineering decisions
+
+In the file-based path, `LogAnalysisService` reads lines through a `Reader` and turns them into `LogRecord` objects. It calculates request counts, status codes, resources and response sizes separately from windowed features used for anomaly detection. The results are collected in `LogResult`; report formatting is separate from analysis.
+
+This makes the data path easier to follow: parsing errors, incorrect aggregation and export problems belong to different stages. The current file-based path does load all lines into memory. Large logs would require a different approach to reading and storing intermediate results.
+
 ## Thesis, software registration and publications
 
 In 2025, I completed my undergraduate thesis at MIET on developing a software module for monitoring and analysing Nginx server logs.
@@ -40,6 +46,7 @@ I also wrote two articles on this work, both in Russian:
 - [Stream-based processing of Nginx logs in Kubernetes](https://naukaip.ru/wp-content/uploads/2025/07/K-803.pdf#page=13) — Best Scientific Work 2025 proceedings, pp. 13–17. The paper received second place in the Technical Sciences section of the competition organised by the Science and Education International Centre for Scientific Cooperation.
 
 ## Links
+
 
 - [README](https://github.com/Therad445/nginx-log-analyzer/blob/main/README.md)
 - [Source code](https://github.com/Therad445/nginx-log-analyzer/blob/main/src/main/java/io/github/therad445/loganalyzer/service/LogAnalysisService.java)

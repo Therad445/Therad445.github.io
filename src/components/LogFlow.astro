@@ -1,0 +1,16 @@
+---
+import {pick,type Lang} from '../data/site';
+interface Props {lang:Lang; compact?:boolean}
+const {lang,compact=false}=Astro.props;
+const steps=[
+  {title:pick(lang,'Чтение','Read'),detail:'Combined Log'},
+  {title:pick(lang,'Разбор','Parse'),detail:'NginxLogParser'},
+  {title:pick(lang,'Анализ','Analyse'),detail:pick(lang,'Метрики и аномалии','Metrics & anomalies')},
+  {title:pick(lang,'Отчёт','Report'),detail:'JSON · MD · PDF'}
+];
+---
+<figure class:list={['flow-figure',{compact}]} aria-label={pick(lang,'Путь данных в анализаторе Nginx','Data flow in the Nginx analyser')}>
+  <figcaption>{pick(lang,'От строки лога к отчёту','From a log line to a report')}</figcaption>
+  <ol class="flow-steps">{steps.map((step,i)=><li><span class="step-number" aria-hidden="true">0{i+1}</span><strong>{step.title}</strong><span>{step.detail}</span></li>)}</ol>
+  {!compact&&<p class="figure-note">{pick(lang,'Файловый сценарий Java-сервиса: чтение, разбор, расчёт показателей и подготовка отчёта.','The Java service’s file-based path: reading, parsing, calculating metrics and preparing a report.')}</p>}
+</figure>

@@ -1,0 +1,19 @@
+---
+import {pick,type Lang} from '../data/site';
+interface Props {lang:Lang}
+const {lang}=Astro.props;
+const source='https://commons.wikimedia.org/wiki/File:Тукай_Габдулла._Мәктәптә_милли_әдәбият_дәресләре_1911.pdf';
+---
+<div class="research-method">
+  <figure class="archive-figure">
+    <a href={source}><img src="/images/tukay-1911.jpg" width="500" height="744" alt={pick(lang,'Титульная страница книги Габдуллы Тукая «Мәктәптә милли әдәбият дәресләре», 1911, арабская графика.','Title page of Gabdulla Tukay’s «Мәктәптә милли әдәбият дәресләре», 1911, in Arabic script.')} loading="lazy" decoding="async"/></a>
+    <figcaption>{pick(lang,'Г. Тукай, 1911.','G. Tukay, 1911.')} <a href={source}>Wikimedia Commons</a> · {pick(lang,'общественное достояние','public domain')}. {pick(lang,'Историческая иллюстрация, не экспериментальные данные.','A historical illustration, not experimental data.')}</figcaption>
+  </figure>
+  <div><h3>{pick(lang,'От изображения к проверяемому результату','From an image to a result we can check')}</h3>
+    <ol class="method-steps">
+      <li><strong>{pick(lang,'Подготовить эталон','Establish a reference')}</strong><p>{pick(lang,'Разобрать текст и отметить места, где чтение неоднозначно. Ответ модели сам по себе не становится эталоном.','Transcribe the text and mark ambiguous readings. A model’s output does not become a reference by itself.')}</p></li>
+      <li><strong>{pick(lang,'Задать правила сравнения','Define the comparison')}</strong><p>{pick(lang,'Зафиксировать нормализацию, сегментацию и метрики, чтобы сравнивать одинаковые задачи.','Fix normalisation, segmentation and metrics so that the tasks being compared remain equivalent.')}</p></li>
+      <li><strong>{pick(lang,'Разобрать ошибки','Inspect the errors')}</strong><p>{pick(lang,'Посмотреть, какие символы и типы документов меняют результат, а не ограничиваться одной средней оценкой.','Look at the characters and document types that affect results, rather than relying on one average score.')}</p></li>
+    </ol>
+  </div>
+</div>

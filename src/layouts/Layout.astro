@@ -1,8 +1,8 @@
 ---
 import '../styles/global.css';
 import { person, sections, pick, url, type Lang } from '../data/site';
-interface Props { lang:Lang; title?:string; description?:string; path?:string; type?:'WebPage'|'ProfilePage'|'Article'; noindex?:boolean; date?:string }
-const {lang,title,description=person.summary[lang],path='',type='WebPage',noindex=false,date} = Astro.props;
+interface Props { lang:Lang; title?:string; description?:string; path?:string; type?:'WebPage'|'ProfilePage'|'Article'; noindex?:boolean; date?:string; wide?:boolean }
+const {lang,title,description=person.summary[lang],path='',type='WebPage',noindex=false,date,wide=false} = Astro.props;
 const origin=Astro.site!;
 const canonical=new URL(noindex ? "/404.html" : url(lang,path),origin).href;
 const fullTitle=title ? `${title} — ${person.name[lang]}` : `${person.name[lang]} / ${person.name[lang==='ru'?'en':'ru']} — ${pick(lang,'Личный сайт','Personal website')}`;
@@ -24,7 +24,7 @@ const schema={'@context':'https://schema.org','@type':type,url:canonical,name:fu
 </head>
 <body>
 <a class="skip-link" href="#main">{pick(lang,'К содержимому','Skip to content')}</a>
-<div class="container">
+<div class:list={['container',{'wide':wide}]}>
 <header class="site-header">
 <div class="header-top">
 <a class="brand" href={url(lang)}>{person.name[lang]}</a>
@@ -35,7 +35,7 @@ const schema={'@context':'https://schema.org','@type':type,url:canonical,name:fu
 </nav>
 </header>
 <main id="main"><slot/></main>
-<footer class="site-footer"><span>© 2026 {person.name[lang]}</span><div class="footer-links"><a href={person.github}>GitHub</a><a href={`mailto:${person.email}`}>{pick(lang,'Написать письмо','Email me')}</a><a href="#main">{pick(lang,'Наверх','Back to top')}</a></div></footer>
+<footer class="site-footer"><span>© {new Date().getUTCFullYear()} {person.name[lang]}</span><div class="footer-links"><a href={person.github}>GitHub</a><a href={url(lang,'contact')}>{pick(lang,'Контакты','Contact')}</a><a href="#main">{pick(lang,'Наверх','Back to top')}</a></div></footer>
 </div>
 <script>
 const button=document.querySelector<HTMLButtonElement>('[data-theme-toggle]');

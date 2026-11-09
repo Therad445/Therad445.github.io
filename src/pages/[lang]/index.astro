@@ -2,19 +2,45 @@
 import {getCollection} from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import PostList from '../../components/PostList.astro';
-import {languages,person,pick,url,type Lang} from '../../data/site';
+import LogFlow from '../../components/LogFlow.astro';
+import {languages,person,pick,url,researchFocus,updated,type Lang} from '../../data/site';
 export function getStaticPaths(){return languages.map(lang=>({params:{lang}}))}
 const lang=Astro.params.lang as Lang;
-const projects=(await getCollection('projects',({data})=>data.lang===lang)).sort((a,b)=>b.data.order-a.data.order);
 const notes=(await getCollection('notes',({data})=>data.lang===lang)).sort((a,b)=>b.data.date.localeCompare(a.data.date));
 ---
-<Layout lang={lang} type="ProfilePage">
-<section class="home-intro">
-<h1>{pick(lang,'Привет, я Радмир.','Hi, I’m Radmir.')}</h1>
-<p>{person.intro[lang]} {pick(lang,'Здесь собираю свои проекты, заметки к ним и материалы исследований.','This is where I keep my projects, notes about them and research material.')}</p>
-<p>{pick(lang,'Помимо кода, люблю историю, старые тексты и художественную литературу. Иногда эти интересы пересекаются: сейчас, например, занимаюсь оценкой распознавания исторических текстов.','Outside programming, I enjoy history, old texts and fiction. These interests sometimes overlap: one of my current research topics is evaluating the recognition of historical texts.')}</p>
-<div class="quiet-links"><a href={url(lang,'about')}>{pick(lang,'Немного обо мне','More about me')}</a><a href={person.github}>GitHub</a><a href={`mailto:${person.email}`}>{pick(lang,'Написать','Email me')}</a></div>
+<Layout lang={lang} type="ProfilePage" wide>
+<section class="home-intro home-portrait">
+  <div>
+    <p class="eyebrow">{pick(lang,'Программирование · Инфраструктура · Машинное обучение','Software · Infrastructure · Machine learning')}</p>
+    <h1>{person.name[lang]}</h1>
+    <p class="hero-lead">{pick(lang,'Пишу на Java и Python, работаю с инфраструктурой и изучаю машинное обучение.','I write Java and Python, work with infrastructure and study machine learning.')}</p>
+    <p>{pick(lang,'Здесь собраны мои инженерные проекты, исследования и заметки. Мне интересно, как устроены системы, что можно узнать из их поведения и где заканчивается уверенность в полученном результате.','This is where I keep my engineering projects, research and notes. I’m interested in how systems work, what their behaviour can tell us, and where our confidence in a result ends.')}</p>
+    <div class="quiet-links"><a href={url(lang,'about')}>{pick(lang,'Биография','Biography')}</a><a href={url(lang,'projects')}>{pick(lang,'Проекты и код','Projects and code')}</a><a href={url(lang,'contact')}>{pick(lang,'Связаться','Get in touch')}</a></div>
+  </div>
+  <figure class="portrait"><img src="/images/radmir-speaking.jpg" width="460" height="460" alt={pick(lang,'Радмир Исламов с микрофоном','Radmir Islamov holding a microphone')} fetchpriority="high" decoding="async"/></figure>
 </section>
-<section class="blog-section" aria-labelledby="notes"><h2 id="notes">{pick(lang,'Заметки','Notes')}</h2><PostList lang={lang} notes={notes.slice(0,1)} projects={projects.slice(0,2)} heading="h3"/><p class="more-link"><a href={url(lang,'writing')}>{pick(lang,'Все заметки и статьи','All notes and articles')}</a></p></section>
-<section class="home-aside"><h2>{pick(lang,'Чем ещё занимаюсь','What else I’m working on')}</h2><p>{pick(lang,'Исследую оценку OCR на исторических текстах и телеметрию LLM-сервисов. Магистерская работа связана с поиском сообществ в графах. Об этих темах и их текущем состоянии — на','I’m studying OCR evaluation on historical texts and telemetry in LLM serving. My master’s research concerns community detection in graphs. There is more about these topics on the')} <a href={url(lang,'research')}>{pick(lang,'странице исследований','research page')}</a>.</p><p>{pick(lang,'А книги и несколько слов о том, что мне нравится читать, собраны','I also keep a short list of books and reading interests')} <a href={url(lang,'library')}>{pick(lang,'здесь','here')}</a>.</p></section>
+<dl class="home-facts">
+  <div><dt>{pick(lang,'Образование','Education')}</dt><dd>{pick(lang,'МИЭТ → ВШЭ и МФТИ','MIET → HSE and MIPT')}<span>{pick(lang,'От программной инженерии к ИИ','From software engineering to AI')}</span></dd></div>
+  <div><dt>{pick(lang,'Опыт','Experience')}</dt><dd>VK · {pick(lang,'Т-Банк','T-Bank')}<span>{pick(lang,'ИТ-поддержка, инфраструктура, SRE','IT support, infrastructure, SRE')}</span></dd></div>
+  <div><dt>{pick(lang,'Вне работы','Beyond work')}</dt><dd>{pick(lang,'История и литература','History and literature')}<span>{pick(lang,'Старые тексты, языки, фотография','Old texts, languages, photography')}</span></dd></div>
+</dl>
+<section class="featured-work" aria-labelledby="featured-title">
+  <div class="section-heading"><h2 id="featured-title">{pick(lang,'Избранная работа','Selected work')}</h2><a href={url(lang,'projects')}>{pick(lang,'Все проекты','All projects')} <span aria-hidden="true">↗</span></a></div>
+  <div class="featured-body">
+    <div><p class="eyebrow">Java / Spring Boot / {pick(lang,'анализ данных','data analysis')}</p><h3><a href={url(lang,'projects/nginx-log-analyzer')}>Nginx Log Analyzer</a></h3><p>{pick(lang,'Сервис превращает серверные логи в показатели, по которым можно заметить ошибки и необычную активность. Чтение, разбор, анализ и отчёт разделены на самостоятельные части.','A service that turns server logs into metrics for spotting errors and unusual activity. Reading, parsing, analysis and reporting are separate parts of the implementation.')}</p><p class="work-evidence">{pick(lang,'ВКР МИЭТ, 2025 · регистрация программы · две статьи по теме','MIET undergraduate thesis, 2025 · software registration · two related articles')}</p><div class="quiet-links"><a href={url(lang,'projects/nginx-log-analyzer')}>{pick(lang,'Разбор и демонстрация','Walkthrough and demo')} <span aria-hidden="true">→</span></a><a href="https://github.com/Therad445/nginx-log-analyzer">GitHub</a></div></div>
+    <LogFlow lang={lang} compact/>
+  </div>
+  <ul class="work-links"><li><a href={url(lang,'projects/sre-observability-platform')}>SRE Observability Stack</a><span>{pick(lang,'HTTP-пробы, Prometheus и доступность сервиса','HTTP probes, Prometheus and service availability')}</span></li><li><a href={url(lang,'projects/nstep-sac-reproducibility')}>n-step Soft Actor-Critic</a><span>{pick(lang,'Учебный эксперимент: код, график и ограничения','A course experiment: code, a chart and limitations')}</span></li></ul>
+</section>
+<section class="research-overview" aria-labelledby="research-title">
+  <div class="section-heading"><h2 id="research-title">{pick(lang,'Сейчас исследую','Current research')}</h2><time datetime={updated}>{pick(lang,'Ноябрь 2026','November 2026')}</time></div>
+  <p class="section-intro">{pick(lang,'Постепенно двигаюсь от инженерных задач к исследованиям ИИ. Эти работы ещё продолжаются; здесь важнее вопросы и методы проверки, чем обещания результата.','I’m gradually moving from engineering problems towards AI research. These projects are still in progress; the questions and evaluation methods matter more here than promises of results.')}</p>
+  <ol class="focus-list">{researchFocus.map((r,i)=><li><span class="focus-index" aria-hidden="true">0{i+1}</span><div><h3><a href={`${url(lang,'research')}#${r.id}`}>{r.title[lang]}</a></h3><p>{r.text[lang]}</p></div></li>)}</ol>
+  <p class="more-link"><a href={`${url(lang,'research')}#publications`}>{pick(lang,'Опубликованные статьи и материалы конференций','Published articles and conference material')} <span aria-hidden="true">→</span></a></p>
+</section>
+<div class="home-bottom">
+  <section class="blog-section" aria-labelledby="notes"><h2 id="notes">{pick(lang,'Из заметок','From the notebook')}</h2><PostList lang={lang} notes={notes.slice(0,1)} heading="h3"/><p class="more-link"><a href={url(lang,'writing')}>{pick(lang,'Все заметки','All notes')} <span aria-hidden="true">→</span></a></p></section>
+  <section class="reading-aside"><p class="eyebrow">{pick(lang,'На книжной полке','On the bookshelf')}</p><h2>{pick(lang,'О судьбе и свободе воли','On fate and free will')}</h2><p>{pick(lang,'В «Макбете» меня занимает, как пророчество становится оправданием собственного выбора. К этому вопросу я возвращаюсь и в других книгах — от древних эпосов до Лавкрафта.','In Macbeth, I’m interested in how a prophecy becomes a justification for someone’s choices. I return to that question in other books, from ancient epics to Lovecraft.')}</p><a href={url(lang,'library')}>{pick(lang,'Книги и другие интересы','Books and other interests')} <span aria-hidden="true">→</span></a></section>
+</div>
+<section class="work-contact"><h2>{pick(lang,'О работе и совместных проектах','Work and collaboration')}</h2><p>{pick(lang,'Мне интересны разработка сервисов, надёжность инфраструктуры и инженерная сторона ML. Для первого знакомства можно посмотреть проекты, а затем написать о своей задаче.','I’m interested in service development, infrastructure reliability and the engineering side of ML. The projects offer a starting point; then feel free to write about the problem you’re working on.')}</p><a href={url(lang,'contact')}>{pick(lang,'Контакты','Contact')} <span aria-hidden="true">→</span></a></section>
 </Layout>

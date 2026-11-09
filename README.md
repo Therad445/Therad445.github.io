@@ -32,6 +32,9 @@ The deployable output is `dist/`. The checks cover routes, internal links, langu
 - `src/content.config.ts` — validated content schema. `noteTitle` is an optional conversational title; `date` is the note date, not the project completion date.
 - `src/layouts/Layout.astro` — navigation, theme and SEO metadata.
 - `src/styles/global.css` — typography, layout and themes.
+- `src/components/LogFlow.astro`, `LogDemo.astro` — a source-grounded data-flow diagram and a labelled browser-only demonstration using synthetic requests.
+- `public/images/` — local portraits, an attributed public-domain historical illustration and the experimental figure. Image provenance is recorded in `SOURCES.md`.
+- `public/data/halfcheetah-summary.csv` — a snapshot of the public experiment data. Regenerate its figure with `python3 scripts/render-figures.py` (optional editorial dependency: Matplotlib; not needed for the Astro build).
 - `SOURCES.md` — public sources supporting the portfolio.
 
 Research in progress, course experiments, conference presentations and published articles are listed separately. Update both language versions together, preserve coauthor credits and keep results linked to their sources. Certificates supplied by the owner can support factual entries without publishing the original scans. Never place personal source documents in `public/`.

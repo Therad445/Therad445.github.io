@@ -1,0 +1,42 @@
+---
+import {pick,type Lang} from '../data/site';
+interface Props {lang:Lang}
+const {lang}=Astro.props;
+const initial=[['/','200',1240],['/api/catalog','200',3200],['/api/catalog','200',2800],['/assets/main.css','200',6400],['/missing','404',180],['/health','200',64]];
+---
+<section class="log-demo" data-log-demo data-lang={lang} aria-labelledby="demo-title">
+  <div class="section-heading"><h2 id="demo-title">{pick(lang,'Что можно увидеть в логах','What the logs can tell us')}</h2><span class="eyebrow">{pick(lang,'Интерактивный пример','Interactive example')}</span></div>
+  <p>{pick(lang,'Один и тот же набор показателей по-разному описывает обычный трафик и серию ошибок. Переключи пример, чтобы сравнить.','The same metrics tell different stories for normal traffic and a burst of errors. Switch samples to compare.')}</p>
+  <div class="demo-controls" role="group" aria-label={pick(lang,'Набор запросов','Request sample')}>
+    <button type="button" data-sample="normal" aria-pressed="true">{pick(lang,'Обычный трафик','Normal traffic')}</button>
+    <button type="button" data-sample="errors" aria-pressed="false">{pick(lang,'Серия ошибок','Error burst')}</button>
+  </div>
+  <dl class="demo-metrics" aria-live="polite" aria-atomic="true">
+    <div><dt>{pick(lang,'Запросов','Requests')}</dt><dd data-count>6</dd></div>
+    <div><dt>{pick(lang,'Ответов 5xx','5xx responses')}</dt><dd data-errors>0</dd></div>
+    <div><dt>{pick(lang,'Средний размер ответа','Mean response size')}</dt><dd><span data-average>2 314</span> B</dd></div>
+  </dl>
+  <div class="table-scroll"><table><caption class="sr-only">{pick(lang,'Вымышленные HTTP-запросы для демонстрации','Synthetic HTTP requests for the demonstration')}</caption><thead><tr><th scope="col">{pick(lang,'Путь','Path')}</th><th scope="col">{pick(lang,'Статус','Status')}</th><th scope="col">{pick(lang,'Байты','Bytes')}</th></tr></thead><tbody>{initial.map(row=><tr><td><code>{row[0]}</code></td><td>{row[1]}</td><td>{row[2]}</td></tr>)}</tbody></table></div>
+  <p class="figure-note">{pick(lang,'Иллюстрация на вымышленных запросах. Показатели считаются в браузере; Java-сервис здесь не запускается.','An illustration using synthetic requests. Metrics are calculated in the browser; the Java service is not running here.')}</p>
+  <noscript><p>{pick(lang,'Показан обычный трафик. Для переключения примеров нужен JavaScript.','The normal-traffic sample is shown. JavaScript is needed to switch samples.')}</p></noscript>
+</section>
+<script>
+const samples={
+  normal:[['/',200,1240],['/api/catalog',200,3200],['/api/catalog',200,2800],['/assets/main.css',200,6400],['/missing',404,180],['/health',200,64]],
+  errors:[['/',200,1240],['/api/catalog',503,96],['/api/catalog',503,96],['/api/catalog',500,128],['/health',503,96],['/health',200,64]]
+} as const;
+document.querySelectorAll<HTMLElement>('[data-log-demo]').forEach(root=>{
+  const formatter=new Intl.NumberFormat(root.dataset.lang==='ru'?'ru-RU':'en-GB');
+  const render=(key:keyof typeof samples)=>{
+    const rows=samples[key];
+    root.querySelector('[data-count]')!.textContent=String(rows.length);
+    root.querySelector('[data-errors]')!.textContent=String(rows.filter(r=>r[1]>=500).length);
+    root.querySelector('[data-average]')!.textContent=formatter.format(Math.round(rows.reduce((n,r)=>n+r[2],0)/rows.length));
+    const body=root.querySelector('tbody')!;body.replaceChildren();
+    for(const row of rows){const tr=document.createElement('tr');row.forEach((value,i)=>{const td=document.createElement('td');if(i===0){const code=document.createElement('code');code.textContent=String(value);td.append(code)}else td.textContent=String(value);tr.append(td)});body.append(tr)}
+    root.querySelectorAll<HTMLButtonElement>('[data-sample]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.sample===key)));
+  };
+  root.querySelectorAll<HTMLButtonElement>('[data-sample]').forEach(b=>b.addEventListener('click',()=>render(b.dataset.sample as keyof typeof samples)));
+  render('normal');
+});
+</script>

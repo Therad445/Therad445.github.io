@@ -4,8 +4,9 @@ import Layout from '../../layouts/Layout.astro';
 import PageHeading from '../../components/PageHeading.astro';
 import Publications from '../../components/Publications.astro';
 import Talks from '../../components/Talks.astro';
+import ResearchMethod from '../../components/ResearchMethod.astro';
 import PostList from '../../components/PostList.astro';
-import {languages,sections,person,pick,url,research,education,furtherEducation,awards,books,type Lang} from '../../data/site';
+import {languages,sections,person,pick,url,research,education,furtherEducation,awards,books,experience,workAreas,type Lang} from '../../data/site';
 export function getStaticPaths(){return languages.flatMap(lang=>sections.map(section=>({params:{lang,section:section.slug}})))}
 const lang=Astro.params.lang as Lang;
 const section=Astro.params.section!;
@@ -15,17 +16,21 @@ const labels:Record<string,{title:string;intro:string}>={
  about:{title:pick(lang,'Обо мне','About me'),intro:pick(lang,'Немного об учёбе, работе и интересах.','A little about my studies, work and interests.')},
  projects:{title:pick(lang,'Проекты','Projects'),intro:pick(lang,'Несколько моих учебных и самостоятельных работ. У каждой есть код и небольшая заметка о том, как она устроена.','A few of my course and personal projects. Each has source code and a short note explaining how it works.')},
  research:{title:pick(lang,'Исследования','Research'),intro:pick(lang,'Текущие исследования, опубликованные статьи и материалы студенческих конференций.','Current research, published articles and material from student conferences.')},
- writing:{title:pick(lang,'Заметки и статьи','Notes and articles'),intro:pick(lang,'О программировании, ИИ и культуре. Здесь же — заметки о проектах и опубликованные статьи.','On programming, AI and culture, alongside project notes and published articles.')},
+ writing:{title:pick(lang,'Заметки и статьи','Notes and articles'),intro:pick(lang,'О программировании, ИИ и культуре. Разборы проектов, вопросы и мысли по ходу работы.','On programming, AI and culture: project walkthroughs, questions and thoughts along the way.')},
  library:{title:pick(lang,'Книги и другие интересы','Books and other interests'),intro:pick(lang,'Люблю классическую литературу, древнюю историю и языки. Ниже — несколько особенно близких мне книг.','I enjoy classical literature, ancient history and languages. Here are a few books that mean a lot to me.')},
  contact:{title:pick(lang,'Контакты','Contact'),intro:pick(lang,'Мне можно написать о работе, исследованиях или о чём-то из этого сайта.','You can get in touch about work, research or something you’ve read here.')},
 };
 const info=labels[section];
 ---
-<Layout lang={lang} title={info.title} description={info.intro} path={section} type={section==='about'?'ProfilePage':'WebPage'}>
+<Layout lang={lang} title={info.title} description={section==='about'?pick(lang,'Биография Радмира Исламова: программная инженерия в МИЭТ, магистерские программы ВШЭ и МФТИ, опыт VK и Т-Банка, исследования и интересы.','Radmir Islamov’s biography: Software Engineering at MIET, graduate programmes at HSE and MIPT, work at VK and T-Bank, research and interests.'):info.intro} path={section} type={section==='about'?'ProfilePage':'WebPage'}>
 <PageHeading lang={lang} {...info}/>
 <div class="page-content">
 {section==='about'&&<>
-<div class="prose">{person.bio[lang].map(p=><p>{p}</p>)}
+<div class="prose">{person.bio[lang].slice(0,3).map(p=><p>{p}</p>)}
+<h2>{pick(lang,'Профессиональный опыт','Professional experience')}</h2>
+<div class="experience-list">{experience.map(e=><section><h3>{e.company==='Т-Банк'?pick(lang,'Т-Банк','T-Bank'):e.company}</h3><p class="role-label">{e.role[lang]}</p><p>{e.text[lang]}</p></section>)}</div>
+<h2>{pick(lang,'Направления работы','Areas of work')}</h2>
+<ul class="area-list">{workAreas.map(a=><li><h3><a href={url(lang,a.path)}>{a.title[lang]}</a></h3><p>{a.text[lang]}</p></li>)}</ul>
 <h2>{pick(lang,'Образование','Education')}</h2>
 <ul class="education-list">{education.map(e=><li><strong>{e.label[lang]}</strong> — {e.text[lang]}<small>{e.period}</small></li>)}</ul>
 <h2>{pick(lang,'Курсы и школы','Courses and schools')}</h2>
@@ -33,16 +38,16 @@ const info=labels[section];
 <h2 id="awards">{pick(lang,'Конкурсы','Competitions')}</h2>
 <ul class="education-list">{awards.map(a=><li><strong>{a.title[lang]}</strong><small>{a.year}</small>{a.text[lang]}</li>)}</ul>
 <p>{pick(lang,'С моей выпускной работой связана программа NginxLogAnalyzerJava. В августе 2025 года она зарегистрирована в Роспатенте; подробнее — в','My undergraduate thesis is connected to NginxLogAnalyzerJava, registered with Rospatent in August 2025. More about it in the')} <a href={url(lang,'projects/nginx-log-analyzer')}>{pick(lang,'заметке о проекте','project note')}</a>.</p>
-<h2>{pick(lang,'С чем работаю','Tools I use')}</h2><p>{pick(lang,'В основном Java и Python. Из инфраструктурных инструментов — Linux, Docker, Kubernetes и Prometheus. В проектах есть Kafka, Flink и ClickHouse; в работах по ML — PyTorch и CUDA.','Mostly Java and Python. For infrastructure, I use Linux, Docker, Kubernetes and Prometheus. My projects also involve Kafka, Flink and ClickHouse; the ML work includes PyTorch and CUDA.')}</p>
+<aside class="personal-note"><img src="/images/radmir-outdoors.jpg" width="150" height="150" loading="lazy" decoding="async" alt={pick(lang,'Радмир Исламов — уличный портрет','Radmir Islamov — an outdoor portrait')}/><div><h2>{pick(lang,'За пределами работы','Beyond work')}</h2><p>{person.bio[lang][3]}</p><p>{pick(lang,'В 2024 году прошёл обучение в фотошколе inFocus при МИЭТ.','In 2024, I completed a course at MIET’s inFocus photography school.')}</p><a href={url(lang,'library')}>{pick(lang,'Книги и другие интересы','Books and other interests')} <span aria-hidden="true">→</span></a></div></aside>
 
 </div></>}
 {section==='projects'&&<ul class="post-list">{projects.map(p=><li class="post-preview"><article><h2><a href={url(lang,`projects/${p.data.slug}`)}>{p.data.title}</a></h2><p>{p.data.summary}</p><div class="project-tools">{p.data.tags.join(' · ')}<br/>{p.data.status}</div><p class="quiet-links"><a href={url(lang,`projects/${p.data.slug}`)}>{pick(lang,'О проекте','Read the note')}</a><a href={p.data.repo}>{pick(lang,'Код на GitHub','Code on GitHub')}</a></p></article></li>)}</ul>}
 {section==='research'&&<>
-{research.map(r=><section class="research-item" id={r.id}><h2>{r.title[lang]}</h2><p class="status">{r.status[lang]}</p><p>{r.text[lang]}</p><p>{r.method[lang]}</p><p class="research-limit">{r.limit[lang]}</p></section>)}
+{research.map(r=><section class="research-item" id={r.id}><h2>{r.title[lang]}</h2><p class="status">{r.status[lang]}</p><p>{r.text[lang]}</p><p>{r.method[lang]}</p>{r.id==='historical-ocr'&&<ResearchMethod lang={lang}/>}<p class="research-limit">{r.limit[lang]}</p></section>)}
 <section class="publications" id="publications"><h2>{pick(lang,'Опубликованные статьи','Published articles')}</h2><Publications lang={lang}/><p class="translation-note">{pick(lang,'Журнальная статья и две работы в материалах конференций и конкурсов. Все тексты опубликованы на русском языке.','A journal article and two papers in conference and competition proceedings. All three are in Russian; the titles above are translated.')}</p></section>
 <Talks lang={lang}/>
 <section class="publications"><h2>{pick(lang,'Учебный эксперимент по RL','An RL course experiment')}</h2><p><a href={url(lang,'projects/nstep-sac-reproducibility')}>n-step Soft Actor-Critic</a> — {pick(lang,'сравнение трёх горизонтов возврата. Код и результаты доступны, но на каждую конфигурацию приходится только один seed.','a comparison of three return horizons. Code and results are available, but there is only one seed per configuration.')}</p></section></>}
-{section==='writing'&&<><PostList lang={lang} notes={notes} projects={[...projects].reverse()}/><section class="publications"><h2>{pick(lang,'Опубликованные статьи','Published articles')}</h2><Publications lang={lang}/>{lang==='en'&&<p class="translation-note">All three articles are in Russian. Their titles are translated here for convenience.</p>}</section></>}
+{section==='writing'&&<><PostList lang={lang} notes={notes} projects={[...projects].reverse()}/><p class="writing-footnote">{pick(lang,'Опубликованные статьи и материалы конференций собраны в','Published articles and conference material are listed on the')} <a href={`${url(lang,'research')}#publications`}>{pick(lang,'разделе исследований','research page')}</a>.</p></>}
 {section==='library'&&<><div class="prose"><p>{pick(lang,'Мне нравятся истории, в которых человек пытается сопротивляться своей судьбе — или тому, что он принимает за судьбу. Поэтому рядом в моём списке оказываются Шекспир, античные эпосы и Лавкрафт.','I like stories about people trying to resist their fate — or what they believe to be their fate. That is how Shakespeare, ancient epics and Lovecraft end up next to each other on my reading list.')}</p></div><ul class="book-list">{books.map(b=><li><h2>{b.title[lang]} <span class="book-author">/ {b.author[lang]}</span></h2><p>{b.note[lang]}</p></li>)}</ul><h2>{pick(lang,'Где веду списки','Where I keep my lists')}</h2><p>{pick(lang,'Книги отмечаю в','I track books on')} <a href="https://www.goodreads.com/therad445">Goodreads</a>, {pick(lang,'аниме и мангу — на','and anime and manga on')} <a href="https://shikimori.io/TheRad445">Shikimori</a>.</p><p>{pick(lang,'Ещё интересуюсь исторической письменностью. С этим связана моя работа по','I’m also interested in historical writing systems. This connects to my work on')} <a href={`${url(lang,'research')}#historical-ocr`}>{pick(lang,'распознаванию старых текстов','recognising old texts')}</a>.</p><p>{pick(lang,'В 2024 году прошёл обучение в фотошколе inFocus при МИЭТ.','In 2024, I completed a course at MIET’s inFocus photography school.')}</p></>}
 {section==='contact'&&<>
 <ul class="contact-list">

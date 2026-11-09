@@ -10,8 +10,8 @@ export const person = {
   vk: 'https://vk.ru/rad445',
   instagram: 'https://www.instagram.com/therad445/',
   summary: {
-    ru: 'Инженер программного обеспечения. Надёжность систем, наблюдаемость и прикладной ИИ. Исследования на пересечении машинного обучения и сложных данных.',
-    en: 'Software engineer working on system reliability, observability and applied AI. Exploring machine learning and the evaluation of complex data.'
+    ru: 'Радмир Исламов — программист. Java, Python, инфраструктура и машинное обучение. Биография, инженерные проекты, исследования исторических текстов и заметки.',
+    en: 'Radmir Islamov is a software engineer working with Java, Python, infrastructure and machine learning. Biography, projects, historical text research and personal notes.'
   },
   intro: {
     ru: 'Я программист. Пишу на Java и Python, работаю с инфраструктурой и изучаю машинное обучение.',
@@ -32,6 +32,20 @@ export const person = {
     ]
   }
 };
+export const experience = [
+  {company:'VK', role:{ru:'ИТ-поддержка и системное администрирование',en:'IT support and systems administration'}, text:{ru:'Работа с пользовательскими задачами и инфраструктурой. Этот опыт стал частью моего перехода от разработки к эксплуатации систем.',en:'Work with user support and infrastructure, forming part of my move from software development towards running systems.'}},
+  {company:'Т-Банк', role:{ru:'SRE',en:'Site reliability engineering'}, text:{ru:'Надёжность сервисов, мониторинг и автоматизация инфраструктурных задач. Дальше этот интерес продолжился в собственных стендах наблюдаемости.',en:'Service reliability, monitoring and infrastructure automation. I continued exploring these topics in my own observability testbeds.'}}
+];
+export const workAreas = [
+  {title:{ru:'Разработка сервисов',en:'Service development'}, text:{ru:'Java и Python, REST API, обработка данных и отчёты. Пример — анализатор логов Nginx.',en:'Java and Python, REST APIs, data processing and reports. The Nginx log analyser is one example.'}, path:'projects/nginx-log-analyzer'},
+  {title:{ru:'Инфраструктура и наблюдаемость',en:'Infrastructure and observability'}, text:{ru:'Linux, Docker, Kubernetes, HTTP-пробы и Prometheus. Интересует связь между измерениями и поведением сервиса.',en:'Linux, Docker, Kubernetes, HTTP probes and Prometheus. I’m interested in how measurements relate to service behaviour.'},path:'projects/sre-observability-platform'},
+  {title:{ru:'Эксперименты с ML',en:'ML experiments'}, text:{ru:'PyTorch, оценка моделей, воспроизводимые конфигурации. В исследованиях — качество данных и ограничения выводов.',en:'PyTorch, model evaluation and reproducible configurations. In research, I focus on data quality and the limits of conclusions.'},path:'research'}
+];
+export const researchFocus = [
+  {id:'historical-ocr',title:{ru:'Исторические тексты',en:'Historical texts'},text:{ru:'Как оценить OCR и VLM, если надёжную транскрипцию ещё нужно подготовить?',en:'How do we evaluate OCR and VLMs when a reliable transcription still needs to be established?'}},
+  {id:'llm-telemetry',title:{ru:'LLM-инфраструктура',en:'LLM infrastructure'},text:{ru:'Что теряется при уменьшении частоты измерений и объёма телеметрии?',en:'What do we lose when we reduce measurement frequency and telemetry volume?'}},
+  {id:'graph-learning',title:{ru:'Графовые методы',en:'Graph methods'},text:{ru:'Как находить сообщества в графах юридических лиц без обучающей разметки?',en:'How can we find communities in graphs of legal entities without training labels?'}}
+];
 export const sections = [
   { slug: 'about', ru: 'Обо мне', en: 'About' },
   { slug: 'projects', ru: 'Проекты', en: 'Projects' },
