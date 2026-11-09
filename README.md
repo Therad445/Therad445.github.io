@@ -26,14 +26,15 @@ The deployable output is `dist/`. The checks cover routes, internal links, langu
 
 ## Content
 
-- `src/data/site.ts` — biography, education, research, publications, books and contacts, in both languages.
+- `src/data/site.ts` — biography, education, awards, research, publications, presentations, books and contacts, in both languages.
 - `src/content/projects/` — Markdown project notes. Each translation has its own language-prefixed ID.
+- `src/content/notes/` — Markdown essays and personal notes, separate from project documentation. Add matching RU/EN files with the same slug.
 - `src/content.config.ts` — validated content schema. `noteTitle` is an optional conversational title; `date` is the note date, not the project completion date.
 - `src/layouts/Layout.astro` — navigation, theme and SEO metadata.
 - `src/styles/global.css` — typography, layout and themes.
 - `SOURCES.md` — public sources supporting the portfolio.
 
-Research in progress and course experiments are labelled separately from published articles. Update both language versions together and keep results linked to their sources.
+Research in progress, course experiments, conference presentations and published articles are listed separately. Update both language versions together, preserve coauthor credits and keep results linked to their sources. Certificates supplied by the owner can support factual entries without publishing the original scans. Never place personal source documents in `public/`.
 
 ## GitHub Pages
 

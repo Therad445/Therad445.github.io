@@ -1,8 +1,12 @@
 ---
 import type {CollectionEntry} from 'astro:content';
 import {pick,url,type Lang} from '../data/site';
-interface Props {lang:Lang; projects:CollectionEntry<'projects'>[]; heading?:'h2'|'h3'}
-const {lang,projects,heading='h2'}=Astro.props;
+interface Props {lang:Lang; projects?:CollectionEntry<'projects'>[]; notes?:CollectionEntry<'notes'>[]; heading?:'h2'|'h3'}
+const {lang,projects=[],notes=[],heading='h2'}=Astro.props;
 const Heading=heading;
+const entries=[
+  ...notes.map(n=>({title:n.data.title,summary:n.data.summary,date:n.data.date,path:`writing/${n.data.slug}`,kind:pick(lang,'Эссе','Essay')})),
+  ...projects.map(p=>({title:p.data.noteTitle||p.data.title,summary:p.data.summary,date:p.data.date,path:`projects/${p.data.slug}`,kind:pick(lang,'Заметка о проекте','Project note')}))
+];
 ---
-<ul class="post-list">{projects.map(p=><li class="post-preview"><article><Heading><a href={url(lang,`projects/${p.data.slug}`)}>{p.data.noteTitle||p.data.title}</a></Heading><div class="post-meta"><time datetime={p.data.date}>{new Date(p.data.date).toLocaleDateString(lang==='ru'?'ru-RU':'en-GB',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'})}</time><span>{pick(lang,'Заметка о проекте','Project note')}</span></div><p>{p.data.summary}</p></article></li>)}</ul>
+<ul class="post-list">{entries.map(p=><li class="post-preview"><article><Heading><a href={url(lang,p.path)}>{p.title}</a></Heading><div class="post-meta"><time datetime={p.date}>{new Date(p.date).toLocaleDateString(lang==='ru'?'ru-RU':'en-GB',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'})}</time><span>{p.kind}</span></div><p>{p.summary}</p></article></li>)}</ul>

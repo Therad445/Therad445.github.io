@@ -28,6 +28,17 @@ Reading, parsing, analysis and reporting are separate parts of the code. That ma
 
 Source code, tests, documentation and infrastructure files. This is an educational engineering project. I do not quote production throughput here; that would require separate, reproducible measurements.
 
+## Thesis, software registration and publications
+
+In 2025, I completed my undergraduate thesis at MIET on developing a software module for monitoring and analysing Nginx server logs.
+
+**NginxLogAnalyzerJava — an Nginx log-file analysis system** was entered in Russia’s Register of Computer Programs on 13 August 2025, registration certificate No. **2025681328**. I am listed as its author and rights holder.
+
+I also wrote two articles on this work, both in Russian:
+
+- [Developing a software module for monitoring and analysing Nginx server logs](https://moluch.ru/archive/576/125503) — Molodoy Ucheny, 2025, No. 25 (576), pp. 7–10.
+- [Stream-based processing of Nginx logs in Kubernetes](https://naukaip.ru/wp-content/uploads/2025/07/K-803.pdf#page=13) — Best Scientific Work 2025 proceedings, pp. 13–17. The paper received second place in the Technical Sciences section of the competition organised by the Science and Education International Centre for Scientific Cooperation.
+
 ## Links
 
 - [README](https://github.com/Therad445/nginx-log-analyzer/blob/main/README.md)

@@ -11,7 +11,7 @@ const decode=s=>s.replace(/&amp;/g,'&').replace(/&#39;/g,"'").replace(/&quot;/g,
 const routeFile=pathname=>resolve(dist,'.'+decodeURIComponent(pathname),...(pathname.endsWith('/')?['index.html']:[]));
 let links=0,schemaCount=0,alternateCount=0;
 const localized=htmlFiles.filter(f=>/\/(ru|en)\//.test(f));
-assert.equal(localized.length,22,'22 localized pages are expected');
+assert.equal(localized.length,24,'24 localized pages are expected');
 for(const [file,html] of documents){
  const relative=file.slice(dist.length);
  assert(!/(?:CONTENT_REVIEW|github_audit|audit_extracted)/i.test(html),`Private editorial data in ${relative}`);
@@ -39,9 +39,9 @@ for(const [file,html] of documents){
   links++;
  }
 }
-assert.equal(alternateCount,66);
+assert.equal(alternateCount,72);
 const sitemap=await readFile(resolve(dist,'sitemap.xml'),'utf8');
-assert.equal((sitemap.match(/<loc>/g)||[]).length,22);
+assert.equal((sitemap.match(/<loc>/g)||[]).length,24);
 for(const match of sitemap.matchAll(/<loc>(.*?)<\/loc>/g))assert(documents.has(routeFile(new URL(match[1]).pathname)));
 assert((await readFile(resolve(dist,'robots.txt'),'utf8')).includes('Sitemap:'));
 for(const f of files)assert(!/CONTENT_REVIEW|SOURCES\.md|github_audit|README\.md/.test(f),'Editorial file included in output');

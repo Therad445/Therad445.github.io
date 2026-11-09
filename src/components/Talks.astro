@@ -1,0 +1,14 @@
+---
+import {talks,pick,type Lang} from '../data/site';
+interface Props { lang:Lang }
+const {lang}=Astro.props;
+---
+<section class="publications" id="talks">
+  <h2>{pick(lang,'Доклады, тезисы и конкурсные работы','Presentations, abstracts and competition entries')}</h2>
+  <div class="publication-list">{talks.map(t=><article class="publication" id={t.id}>
+    <h3>{t.title[lang]}</h3>
+    <p class="publication-meta">{t.year} · {t.venue[lang]}</p>
+    <p>{t.detail[lang]}</p>
+    {t.href&&<p class="quiet-links"><a href={t.href}>{pick(lang,'Программа или протокол','Programme or results')}</a></p>}
+  </article>)}</div>
+</section>

@@ -66,6 +66,7 @@ export const research = [
 ];
 export const publications = [
   { id: 'nginx-monitoring', date: '2025-06-23', year: '2025',
+    authors: { ru: 'Р. Р. Исламов', en: 'R. R. Islamov' },
     title: { ru: 'Разработка программного модуля для мониторинга и анализа серверных логов Nginx', en: 'Developing a software module for monitoring and analysing Nginx server logs' },
     originalTitle: 'Разработка программного модуля для мониторинга и анализа серверных логов Nginx',
     venue: { ru: 'Молодой учёный · № 25 (576) · с. 7–10', en: 'Molodoy Ucheny · No. 25 (576) · pp. 7–10' },
@@ -74,13 +75,54 @@ export const publications = [
     description: { ru: 'Модульный подход к мониторингу Nginx, статистическому анализу журналов и подготовке отчётов.', en: 'A modular approach to Nginx monitoring, statistical log analysis and report generation.' }
   },
   { id: 'nginx-streaming', date: '2025-07-05', year: '2025',
+    authors: { ru: 'Р. Р. Исламов', en: 'R. R. Islamov' },
     title: { ru: 'Потоковая обработка логов Nginx в кластере Kubernetes', en: 'Stream-based processing of Nginx logs in Kubernetes' },
     originalTitle: 'Потоковая обработка логов Nginx в кластере Kubernetes',
     venue: { ru: '«Лучшая научная работа 2025» · Пенза · с. 13–17', en: '“Best Scientific Work 2025” proceedings · Penza · pp. 13–17' },
     type: { ru: 'Статья в сборнике', en: 'Proceedings article' },
     href: 'https://naukaip.ru/wp-content/uploads/2025/07/K-803.pdf#page=13',
     description: { ru: 'Конвейер Filebeat, Kafka, Flink и ClickHouse; развёртывание в Kubernetes с Helm и Argo CD.', en: 'A Filebeat, Kafka, Flink and ClickHouse pipeline, deployed to Kubernetes with Helm and Argo CD.' }
+  },
+  { id: 'stolypin-reforms', date: '2022-05-26', year: '2022',
+    authors: { ru: 'Р. Р. Исламов, В. В. Наточий', en: 'R. R. Islamov, V. V. Natochiy' },
+    title: { ru: 'Анализ столыпинских реформ', en: 'An analysis of Stolypin’s reforms' },
+    originalTitle: 'Анализ столыпинских реформ',
+    venue: { ru: '«Социально-гуманитарные инновации: стратегии фундаментальных и прикладных научных исследований» · ОГУ · с. 53–58', en: '“Social and Humanities Innovations: Strategies for Fundamental and Applied Research” · Orenburg State University · pp. 53–58' },
+    type: { ru: 'Статья в материалах конференции', en: 'Conference proceedings article' },
+    href: 'https://sci-conference.osu.ru/assets/files/conf_info/conf4/s1.pdf#page=53',
+    description: { ru: 'Ранняя студенческая работа о реформах Петра Столыпина и их историческом контексте.', en: 'An early student paper on Pyotr Stolypin’s reforms and their historical context.' }
   }
+];
+export const talks = [
+  { id: 'miet-2025', year: '2025',
+    title: { ru: 'Разработка программного модуля для мониторинга и анализа серверных логов Nginx', en: 'Developing a software module for monitoring and analysing Nginx server logs' },
+    venue: { ru: 'XXXII конференция «Микроэлектроника и информатика — 2025», МИЭТ', en: '32nd “Microelectronics and Informatics — 2025” conference, MIET' },
+    detail: { ru: 'Тезисы и включение в программу секции «Информационные системы и технологии в цифровой экономике».', en: 'A conference abstract and a programme entry in the Information Systems and Technologies in the Digital Economy section.' },
+    href: undefined
+  },
+  { id: 'labour-migration-2024', year: '2024',
+    title: { ru: 'Внутренняя трудовая миграция населения на территории России', en: 'Internal labour migration in Russia' },
+    venue: { ru: 'X конкурс НИР «Экономическое развитие страны: современные вызовы и пути их решения», Мининский университет', en: '10th student research competition “Economic Development: Current Challenges and Solutions”, Minin University' },
+    detail: { ru: 'Конкурсное эссе. Участие в секции «Роль трудовых ресурсов в развитии промышленных предприятий».', en: 'A competition essay in the section on the role of labour resources in industrial development.' },
+    href: 'https://mininuniver.ru/images/docs/kalendar-meropriyatij/2024/Протокол_конкурса_НИР_07.11.2024.pdf'
+  },
+  { id: 'photomath-2022', year: '2022',
+    title: { ru: 'Анализ возможностей приложения Photomath', en: 'An analysis of the capabilities of Photomath' },
+    venue: { ru: 'XLIV Международная студенческая научная конференция, ОГУ', en: '44th International Student Research Conference, Orenburg State University' },
+    detail: { ru: 'Доклад, указанный в программе совместно с Т. Н. Тарасовой. За доклад получено благодарственное письмо факультета математики и информационных технологий ОГУ.', en: 'A presentation listed in the programme with T. N. Tarasova. The Faculty of Mathematics and Information Technology issued a letter of appreciation for the presentation.' },
+    href: 'https://konf.osu.ru/student/assets/files/conf_info/conf1/d1.pdf#page=22'
+  }
+];
+export const furtherEducation = [
+  { label: {ru:'Т-Академия',en:'T-Academy'}, period:'2026', text:{ru:'Бэкенд: «Разработка на Java» и «Надёжность ПО»',en:'Backend programme: Java Development and Software Reliability'} },
+  { label: {ru:'ФКН НИУ ВШЭ',en:'HSE Faculty of Computer Science'}, period:'19–20.08.2023', text:{ru:'Участник летней школы по аналитике и Data Science',en:'Participant in the Summer School in Analytics and Data Science'} },
+  { label: {ru:'МИЭТ',en:'MIET'}, period:'2023', text:{ru:'Повышение квалификации «Цифровой инструментарий и методология анализа научных текстов», 36 часов',en:'Continuing education in Digital Tools and Methods for Analysing Scholarly Texts, 36 hours'} }
+];
+export const awards = [
+  { year:'2025', title:{ru:'Конкурс портфолио ИТМО',en:'ITMO portfolio competition'},
+    text:{ru:'Победитель по трём магистерским программам: «Распределённые веб-сервисы», «DevOps-инженер облачных сервисов» и «Управление высокотехнологичным бизнесом».',en:'Winner for three master’s programmes: Distributed Web Services, Cloud Services DevOps Engineer and High-Tech Business Management.'} },
+  { year:'2025', title:{ru:'«Лучшая научная работа — 2025»',en:'“Best Scientific Work — 2025”'},
+    text:{ru:'II место в секции «Технические науки» XX Международного научно-исследовательского конкурса МЦНС «Наука и Просвещение» за работу о потоковой обработке логов Nginx в Kubernetes.',en:'Second place in the Technical Sciences section of the 20th International Research Competition organised by the Science and Education International Centre for Scientific Cooperation, for a paper on streaming Nginx logs in Kubernetes.'} }
 ];
 export const education = [
   { label: {ru:'МИЭТ',en:'MIET'}, period:'2021–2025', text:{ru:'Бакалавриат · Программная инженерия',en:'Bachelor’s degree · Software Engineering'} },

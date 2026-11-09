@@ -1,6 +1,6 @@
 ---
-import {publications,pick,type Lang} from '../data/site';
+import {publications,type Lang} from '../data/site';
 interface Props{lang:Lang}
 const {lang}=Astro.props;
 ---
-<div class="publication-list">{publications.map(p=><article class="publication"><h3><a href={p.href}>{p.title[lang]}</a></h3><p class="publication-meta">{p.year} · {pick(lang,'Исламов Р. Р.','R. R. Islamov')} · {p.venue[lang]}<br/>{p.type[lang]}</p><p>{p.description[lang]}</p></article>)}</div>
+<div class="publication-list">{publications.map(p=><article class="publication"><h3><a href={p.href}>{p.title[lang]}</a></h3><p class="publication-meta">{p.year} · {p.authors[lang]} · {p.venue[lang]}<br/>{p.type[lang]}</p><p>{p.description[lang]}</p></article>)}</div>
