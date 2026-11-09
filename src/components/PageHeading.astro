@@ -1,0 +1,6 @@
+---
+import type {Lang} from '../data/site';
+interface Props{lang:Lang;title:string;intro?:string}
+const {title,intro}=Astro.props;
+---
+<header class="page-heading"><h1>{title}</h1>{intro&&<p class="intro">{intro}</p>}</header>

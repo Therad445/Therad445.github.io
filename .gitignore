@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+!.env.example
+.openai/
+.sites-runtime/
+CONTENT_REVIEW.md
+editorial/
+*.docx

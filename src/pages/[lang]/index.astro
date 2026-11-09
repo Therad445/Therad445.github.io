@@ -1,0 +1,19 @@
+---
+import {getCollection} from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import PostList from '../../components/PostList.astro';
+import {languages,person,pick,url,type Lang} from '../../data/site';
+export function getStaticPaths(){return languages.map(lang=>({params:{lang}}))}
+const lang=Astro.params.lang as Lang;
+const projects=(await getCollection('projects',({data})=>data.lang===lang)).sort((a,b)=>b.data.order-a.data.order);
+---
+<Layout lang={lang} type="ProfilePage">
+<section class="home-intro">
+<h1>{pick(lang,'Привет, я Радмир.','Hi, I’m Radmir.')}</h1>
+<p>{person.intro[lang]} {pick(lang,'Здесь собираю свои проекты, заметки к ним и материалы исследований.','This is where I keep my projects, notes about them and research material.')}</p>
+<p>{pick(lang,'Помимо кода, люблю историю, старые тексты и художественную литературу. Иногда эти интересы пересекаются: сейчас, например, занимаюсь оценкой распознавания исторических текстов.','Outside programming, I enjoy history, old texts and fiction. These interests sometimes overlap: one of my current research topics is evaluating the recognition of historical texts.')}</p>
+<div class="quiet-links"><a href={url(lang,'about')}>{pick(lang,'Немного обо мне','More about me')}</a><a href={person.github}>GitHub</a><a href={`mailto:${person.email}`}>{pick(lang,'Написать','Email me')}</a></div>
+</section>
+<section class="blog-section" aria-labelledby="notes"><h2 id="notes">{pick(lang,'Заметки о проектах','Project notes')}</h2><PostList lang={lang} projects={projects.slice(0,3)} heading="h3"/><p class="more-link"><a href={url(lang,'writing')}>{pick(lang,'Все заметки и статьи','All notes and articles')}</a></p></section>
+<section class="home-aside"><h2>{pick(lang,'Чем ещё занимаюсь','What else I’m working on')}</h2><p>{pick(lang,'Исследую оценку OCR на исторических текстах и телеметрию LLM-сервисов. Магистерская работа связана с поиском сообществ в графах. Об этих темах и их текущем состоянии — на','I’m studying OCR evaluation on historical texts and telemetry in LLM serving. My master’s research concerns community detection in graphs. There is more about these topics on the')} <a href={url(lang,'research')}>{pick(lang,'странице исследований','research page')}</a>.</p><p>{pick(lang,'А книги и несколько слов о том, что мне нравится читать, собраны','I also keep a short list of books and reading interests')} <a href={url(lang,'library')}>{pick(lang,'здесь','here')}</a>.</p></section>
+</Layout>

@@ -1,0 +1,46 @@
+---
+import '../styles/global.css';
+import { person, sections, pick, url, type Lang } from '../data/site';
+interface Props { lang:Lang; title?:string; description?:string; path?:string; type?:'WebPage'|'ProfilePage'|'Article'; noindex?:boolean; date?:string }
+const {lang,title,description=person.summary[lang],path='',type='WebPage',noindex=false,date} = Astro.props;
+const origin=Astro.site!;
+const canonical=new URL(noindex ? "/404.html" : url(lang,path),origin).href;
+const fullTitle=title ? `${title} — ${person.name[lang]}` : `${person.name[lang]} / ${person.name[lang==='ru'?'en':'ru']} — ${pick(lang,'Личный сайт','Personal website')}`;
+const otherLang=lang==='ru'?'en':'ru';
+const indexed=import.meta.env.PUBLIC_INDEXABLE!=='false' && !noindex;
+const profile={'@type':'Person','@id':new URL('/#person',origin).href,name:person.name[lang],alternateName:[person.name[otherLang],'Therad445'],url:new URL(url(lang),origin).href,description:person.summary[lang],sameAs:[person.github]};
+const schema={'@context':'https://schema.org','@type':type,url:canonical,name:fullTitle,inLanguage:lang,description,...(type==='ProfilePage'?{mainEntity:profile}:type==='Article'?{headline:title,author:profile,datePublished:date,dateModified:date,image:new URL('/og.png',origin).href,mainEntityOfPage:canonical}:{about:profile})};
+---
+<!doctype html>
+<html lang={lang}>
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>{fullTitle}</title><meta name="description" content={description}/><meta name="robots" content={indexed?'index,follow':'noindex,follow'}/>
+<link rel="canonical" href={canonical}/>{!noindex&&<><link rel="alternate" hreflang="ru" href={new URL(url('ru',path),origin).href}/><link rel="alternate" hreflang="en" href={new URL(url('en',path),origin).href}/><link rel="alternate" hreflang="x-default" href={new URL(url('ru',path),origin).href}/></>}
+<meta property="og:type" content={type==='Article'?'article':'website'}/><meta property="og:title" content={fullTitle}/><meta property="og:description" content={description}/><meta property="og:url" content={canonical}/><meta property="og:locale" content={lang==='ru'?'ru_RU':'en_US'}/><meta property="og:locale:alternate" content={lang==='ru'?'en_US':'ru_RU'}/><meta property="og:site_name" content="Radmir Islamov"/><meta property="og:image" content={new URL('/og.png',origin).href}/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image:alt" content="Radmir Islamov — personal website"/><meta name="twitter:card" content="summary_large_image"/>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/><meta name="theme-color" content="#fdfcf9"/>
+<script is:inline>try{const t=localStorage.getItem('theme');document.documentElement.dataset.theme=t==='dark'||t==='light'?t:matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}catch{document.documentElement.dataset.theme=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}</script>
+<script type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g,'\\u003c')}/>
+</head>
+<body>
+<a class="skip-link" href="#main">{pick(lang,'К содержимому','Skip to content')}</a>
+<div class="container">
+<header class="site-header">
+<div class="header-top">
+<a class="brand" href={url(lang)}>{person.name[lang]}</a>
+<div class="tools"><a class="lang-link" href={url(otherLang,path)} lang={otherLang} aria-label={pick(lang,'Switch to English','Переключить на русский')}>{otherLang.toUpperCase()}</a><button class="theme-toggle" aria-label={pick(lang,'Тёмная тема','Dark theme')} aria-pressed="false" data-theme-toggle><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="7"/><path d="M12 5a7 7 0 0 1 0 14Z" fill="currentColor" stroke="none"/></svg></button></div>
+</div>
+<nav class="site-nav" aria-label={pick(lang,'Основная навигация','Main navigation')}>
+{sections.map(s=><a href={url(lang,s.slug)} aria-current={path.split('/')[0]===s.slug?'page':undefined}>{s[lang]}</a>)}
+</nav>
+</header>
+<main id="main"><slot/></main>
+<footer class="site-footer"><span>© 2026 {person.name[lang]}</span><div class="footer-links"><a href={person.github}>GitHub</a><a href={`mailto:${person.email}`}>{pick(lang,'Написать письмо','Email me')}</a><a href="#main">{pick(lang,'Наверх','Back to top')}</a></div></footer>
+</div>
+<script>
+const button=document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
+const sync=()=>button?.setAttribute('aria-pressed',String(document.documentElement.dataset.theme==='dark'));
+sync();button?.addEventListener('click',()=>{const t=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=t;try{localStorage.setItem('theme',t)}catch{}sync()});
+</script>
+</body>
+</html>
