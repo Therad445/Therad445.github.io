@@ -28,7 +28,7 @@ const info=labels[section];
 {section==='about'&&<>
 <div class="prose">{person.bio[lang].slice(0,3).map(p=><p>{p}</p>)}
 <h2>{pick(lang,'Профессиональный опыт','Professional experience')}</h2>
-<div class="experience-list timeline">{experience.map(e=><section><p class="timeline-period">{e.period}</p><h3>{e.company[lang]}</h3><p class="role-label">{e.role[lang]}</p><ul>{e.tasks[lang].map(t=><li>{t}</li>)}</ul><p>{e.result[lang]}</p></section>)}</div><ResumeLinks lang={lang}/>
+<div class="experience-list timeline">{experience.map(e=><section><p class="timeline-period">{e.period}</p><h3>{e.company[lang]}</h3><p class="role-label">{e.role[lang]}</p><ul>{e.tasks[lang].map(t=><li>{t}</li>)}</ul></section>)}</div><ResumeLinks lang={lang}/>
 <h2>{pick(lang,'Направления работы','Areas of work')}</h2>
 <ul class="area-list">{workAreas.map(a=><li><h3><a href={url(lang,a.path)}>{a.title[lang]}</a></h3><p>{a.text[lang]}</p></li>)}</ul>
 <h2>{pick(lang,'Образование','Education')}</h2>

@@ -22,13 +22,13 @@ export const person = {
   bio: {
     ru: [
       'Меня зовут Радмир Исламов. Я программист, окончил МИЭТ по направлению «Программная инженерия». После бакалавриата продолжил учёбу на магистерских программах ВШЭ и МФТИ.',
-      'Начинал с Java, затем стал больше заниматься инфраструктурой. В VK и Т-Банке задачи сместились от написания кода к тому, что происходит с сервисом после запуска: как заметить сбой, найти его причину и сделать диагностику повторяемой. Так в моей работе появились мониторинг, автоматизация и SRE.',
+      'Начинал с Java, затем стал больше заниматься инфраструктурой. В VK занимался ИТ-поддержкой, а в Т-Банке — наблюдаемостью и надёжностью сервисов. Меня всё больше интересовало, как заметить сбой, найти его причину и сделать диагностику повторяемой. Так в моей работе появились мониторинг, автоматизация и SRE.',
       'Сейчас развиваюсь в сторону машинного обучения, сохраняя интерес к инженерной стороне: данным, экспериментам и работе моделей в системе. Историю, особенно древнюю, люблю с детства. Интерес к языкам и старой письменности привёл к теме распознавания исторических тюркских текстов арабской графики. Здесь эти занятия сошлись в конкретной задаче: как проверить ответ модели, когда надёжное чтение самого источника ещё нужно установить.',
       'Ещё люблю древнюю историю, классическую литературу и языки. Часто возвращаюсь к сюжетам о судьбе и свободе воли: что человек может изменить, а что уже определено его происхождением или прошлыми поступками.'
     ],
     en: [
       'My name is Radmir Islamov. I’m a programmer with a bachelor’s degree in Software Engineering from MIET. After graduating, I continued my studies on master’s programmes at HSE University and MIPT.',
-      'I started with Java, then moved towards infrastructure. At VK and T-Bank, the focus shifted from writing code to what happens after a service starts: detecting a failure, finding its cause and making diagnosis repeatable. That brought monitoring, automation and SRE into my work.',
+      'I started with Java, then moved towards infrastructure. At VK, I worked in IT support; at T-Bank, I worked on observability and service reliability. I became increasingly interested in detecting failures, finding their causes and making diagnosis repeatable. That brought monitoring, automation and SRE into my work.',
       'I’m now moving towards machine learning while keeping an interest in its engineering side: data, experiments and models as parts of systems. I have enjoyed history, especially the ancient world, since childhood. An interest in languages and old writing systems led me to recognising historical Turkic texts in Arabic script. These interests meet in a concrete question: how can we check a model’s output when a reliable reading of the source still needs to be established?',
       'I also enjoy ancient history, classical literature and languages. I often return to stories about fate and free will: what people can change, and what has already been shaped by their origins or earlier choices.'
     ]

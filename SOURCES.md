@@ -73,3 +73,7 @@
 - CUDA public source: [commit 04edadb](https://github.com/Therad445/cuda-rentsense-knn/tree/04edadb14ebedaca29b45c074d4814775cffb1b4). Diagram checked against the distance kernels and CPU neighbour-selection code. No GPU benchmark was performed.
 - Demo inputs, outputs, runtime details and source versions: `public/data/project-demos/PROTOCOL_RU.md` and `manifest.json`. The charts with formatted typography visualise actual exports; they are not screenshots of an application UI.
 - Original portrait replacement and a user-authored photo gallery remain pending: no additional photographs with confirmed provenance were available. No unverified profile portrait was used.
+
+### Career wording revision — 10 November 2026
+
+Career descriptions were selected from the owner-supplied Overleaf archive, especially the DevOps MWS and Referral versions, and cross-checked against the owner's explanations. T-Bank entries cover Elasticsearch experiments, reproducibility, diagnostic tooling and configuration change control. VK entries cover diagnostic automation, workstation/service-access troubleshooting and workplace provisioning. These are owner-provided biographical statements, not independent employer verification.
