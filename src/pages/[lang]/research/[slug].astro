@@ -1,0 +1,16 @@
+---
+import {getCollection,render} from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import ResearchMethod from '../../../components/ResearchMethod.astro';
+import {pick,url,type Lang} from '../../../data/site';
+export async function getStaticPaths(){return (await getCollection('research')).map(entry=>({params:{lang:entry.data.lang,slug:entry.data.slug},props:{entry}}))}
+const {entry}=Astro.props;
+const lang=entry.data.lang as Lang;
+const {Content}=await render(entry);
+---
+<Layout lang={lang} title={entry.data.title} description={entry.data.summary} path={`research/${entry.data.slug}`} type="Article" date={entry.data.date} modified={entry.data.updated}>
+<header class="page-heading"><div class="breadcrumbs"><a href={url(lang,'research')}>{pick(lang,'Все исследования','All research')}</a></div><h1>{entry.data.title}</h1><p class="status">{entry.data.status}</p><p class="article-date">{pick(lang,'Содержательно обновлено','Content updated')}: <time datetime={entry.data.updated}>{new Date(entry.data.updated).toLocaleDateString(lang==='ru'?'ru-RU':'en-GB',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'})}</time></p></header>
+<article class="prose"><Content/></article>
+{entry.data.slug==='historical-ocr'&&<ResearchMethod lang={lang}/>}
+<aside class="project-details"><p>{pick(lang,'Исследовательская заметка о текущей работе. Опубликованные статьи перечислены отдельно.','A research note describing work in progress. Published articles are listed separately.')}</p><a href={`${url(lang,'research')}#publications`}>{pick(lang,'Библиография','Bibliography')}</a></aside>
+</Layout>

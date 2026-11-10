@@ -5,7 +5,7 @@ interface Props {lang:Lang; projects?:CollectionEntry<'projects'>[]; notes?:Coll
 const {lang,projects=[],notes=[],heading='h2'}=Astro.props;
 const Heading=heading;
 const entries=[
-  ...notes.map(n=>({title:n.data.title,summary:n.data.summary,date:n.data.date,path:`writing/${n.data.slug}`,kind:pick(lang,'Эссе','Essay')})),
+  ...notes.map(n=>({title:n.data.title,summary:n.data.summary,date:n.data.date,path:`writing/${n.data.slug}`,kind:n.data.kind||pick(lang,'Эссе','Essay')})),
   ...projects.map(p=>({title:p.data.noteTitle||p.data.title,summary:p.data.summary,date:p.data.date,path:`projects/${p.data.slug}`,kind:pick(lang,'Заметка о проекте','Project note')}))
 ];
 ---

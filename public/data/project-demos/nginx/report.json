@@ -1,0 +1,18 @@
+{
+  "totalRequests" : 240,
+  "averageResponseSize" : 960.0,
+  "resourceCounts" : {
+    "/notes/" : 60,
+    "/health" : 60,
+    "/projects/" : 60,
+    "/" : 60
+  },
+  "statusCodeCounts" : {
+    "500" : 24,
+    "404" : 21,
+    "200" : 195
+  },
+  "percentile" : 1408.0,
+  "anomalies" : { },
+  "suspiciousIps" : [ ]
+}

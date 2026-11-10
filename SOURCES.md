@@ -62,3 +62,14 @@
 - Демонстрация HTTP-запросов использует вымышленные локальные данные. Код Java не исполняется в браузере; вычисляются только количество запросов, число ответов 5xx и средний размер ответа. Эти ограничения явно указаны рядом с примером.
 
 Описания опыта в VK и Т-Банке остаются биографическими сведениями владельца. Новые должности, сроки работы, производственные результаты и внутренние показатели не добавлялись.
+
+## Content and evidence update — 10 November 2026
+
+- Employment tasks, years and degree status: owner-supplied résumé and the owner's explanations. These are biographical assertions, not independently verified employer records. Corporate scale, cost savings and disputed numerical achievements were omitted. Both PDF résumés and the biography use `src/data/career.json`.
+- Biography motives and reading notes: the owner's discussions of Java, SRE, AI, ancient history, historical script and favourite literature. New prose is an edited synthesis, not verbatim quotations. No invented incidents or book reviews.
+- Current research: owner-provided research plans and discussions, used to write high-level public descriptions at the owner's request. Original private datasets, graphs, manuscripts and repositories remain private. In-progress work is separate from the three published articles.
+- Nginx public source: [commit d32a266](https://github.com/Therad445/nginx-log-analyzer/tree/d32a266722f59c1d75812bb505890fb6eb617aba). Built with JDK 22/Maven 3.9.6 and run on 240 synthetic log lines. Real exported reports and the original chart are retained, with the chart's incorrect unit label disclosed.
+- SRE public source: [commit a1837e0](https://github.com/Therad445/sre-observability-platform/tree/a1837e05b7c1218177400e91e07a7dd06ac1a70f). Python components and Prometheus ran against a local synthetic HTTP target. Exporter counters were captured; Kubernetes and production workloads were not executed.
+- CUDA public source: [commit 04edadb](https://github.com/Therad445/cuda-rentsense-knn/tree/04edadb14ebedaca29b45c074d4814775cffb1b4). Diagram checked against the distance kernels and CPU neighbour-selection code. No GPU benchmark was performed.
+- Demo inputs, outputs, runtime details and source versions: `public/data/project-demos/PROTOCOL_RU.md` and `manifest.json`. The charts with formatted typography visualise actual exports; they are not screenshots of an application UI.
+- Original portrait replacement and a user-authored photo gallery remain pending: no additional photographs with confirmed provenance were available. No unverified profile portrait was used.

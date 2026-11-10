@@ -11,7 +11,7 @@ const {Content}=await render(note);
   <header class="page-heading">
     <div class="breadcrumbs"><a href={url(lang,'writing')}>{pick(lang,'Все заметки','All notes')}</a></div>
     <h1>{note.data.title}</h1>
-    <p class="article-date"><time datetime={note.data.date}>{new Date(note.data.date).toLocaleDateString(lang==='ru'?'ru-RU':'en-GB',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'})}</time> · {pick(lang,'Эссе','Essay')}</p>
+    <p class="article-date"><time datetime={note.data.date}>{new Date(note.data.date).toLocaleDateString(lang==='ru'?'ru-RU':'en-GB',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'})}</time> · {note.data.kind||pick(lang,'Эссе','Essay')}</p>
   </header>
   <article class="prose"><Content/></article>
   <aside class="project-details"><a href={url(lang,'writing')}>{pick(lang,'Другие заметки и статьи','More notes and articles')}</a></aside>

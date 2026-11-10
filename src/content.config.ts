@@ -6,6 +6,10 @@ const projects = defineCollection({
 });
 const notes = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/notes', generateId: ({ data }) => `${data.lang}/${data.slug}` }),
-  schema: z.object({ lang: z.enum(['ru','en']), slug: z.string(), title: z.string(), summary: z.string(), date: z.string() })
+  schema: z.object({ lang: z.enum(['ru','en']), slug: z.string(), title: z.string(), summary: z.string(), date: z.string(), kind: z.string().optional() })
 });
-export const collections = { projects, notes };
+const research = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/research', generateId: ({ data }) => `${data.lang}/${data.slug}` }),
+  schema: z.object({ lang: z.enum(['ru','en']), slug: z.string(), title: z.string(), summary: z.string(), status: z.string(), date: z.string(), updated: z.string() })
+});
+export const collections = { projects, notes, research };

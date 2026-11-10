@@ -318,3 +318,32 @@ figure { margin: 0; }
   .reading-aside { padding: 20px; border-top: 0; border-left: 2px solid var(--accent); }
 }
 @media print { .chart-dark { display: none!important; } .chart-light { display: block!important; } }
+
+/* Career chronology, portable CV and citation controls. */
+.resume-links { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; margin: 23px 0; font: 14px/1.7 var(--sans); }
+.resume-links span { font-size: 12px; margin-left: 7px; opacity: .85; }
+.resume-primary { display: inline-block; border: 1px solid var(--link); padding: 9px 15px; text-decoration: none; }
+.resume-primary:hover { background: var(--soft); }
+.resume-links.compact { margin: 18px 0 0; }
+.timeline { list-style: none; border-left: 1px solid var(--line); padding-left: 26px; margin-left: 5px; }
+.timeline > li, .timeline > section { position: relative; margin-bottom: 30px; }
+.timeline > li::before, .timeline > section::before { content: ''; position: absolute; width: 7px; height: 7px; border-radius: 50%; background: var(--link); left: -30px; top: 9px; }
+.timeline-period { display: block; color: var(--accent); font: 13px/1.7 var(--sans); margin: 0 0 6px; }
+.timeline h3 { margin: 0 0 6px; }
+.timeline p { margin-bottom: 12px; }
+.timeline li { font-size: 16px; }
+.timeline .role-label { font-family: var(--sans); }
+.citation-actions { display: flex; flex-wrap: wrap; gap: 8px 17px; align-items: center; font: 13px/1.7 var(--sans); margin: 12px 0 18px; }
+.citation-actions button { display: none; color: var(--link); background: none; border: 1px solid var(--line); padding: 7px 10px; }
+.citation-actions button.ready { display: inline-block; }
+.citation-status { font: 12px/1.6 var(--sans); color: var(--muted); }
+.footer-links { flex-wrap: wrap; }
+@media(max-width:600px) { .home-portrait .resume-links { grid-column: 1/-1; margin-top: 2px; } }
+.project-evidence { margin: 42px 0; border-top: 1px solid var(--line); padding-top: 5px; }
+.project-evidence figcaption { font: 14px/1.7 var(--sans); color: var(--muted); margin: 15px 0; }
+.project-evidence figure > a { display: block; }
+.project-evidence img { width: 100%; border: 1px solid var(--line); }
+.project-evidence details { margin: 24px 0; }
+.project-evidence summary { cursor: pointer; color: var(--link); font: 14px/1.7 var(--sans); padding: 10px 0; }
+.project-evidence details figure { margin-top: 18px; }
+.project-evidence .research-limit { color: var(--muted); font-size: 15px; margin-top: 16px; }

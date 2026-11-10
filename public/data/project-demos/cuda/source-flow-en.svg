@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="590.4pt" height="590.4pt" viewBox="0 0 590.4 590.4" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-10T06:11:04.652148</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 590.4 
+L 590.4 590.4 
+L 590.4 0 
+L 0 0 
+z
+" style="fill: #f6f3eb"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 59.616 193.248 
+L 530.784 193.248 
+Q 535.968 193.248 535.968 188.064 
+L 535.968 105.696 
+Q 535.968 100.512 530.784 100.512 
+L 59.616 100.512 
+Q 54.432 100.512 54.432 105.696 
+L 54.432 188.064 
+Q 54.432 193.248 59.616 193.248 
+z
+" clip-path="url(#p2a42e47401)" style="fill: #f6f3eb; stroke: #d8ded7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 59.616 302.688 
+L 530.784 302.688 
+Q 535.968 302.688 535.968 297.504 
+L 535.968 215.136 
+Q 535.968 209.952 530.784 209.952 
+L 59.616 209.952 
+Q 54.432 209.952 54.432 215.136 
+L 54.432 297.504 
+Q 54.432 302.688 59.616 302.688 
+z
+" clip-path="url(#p2a42e47401)" style="fill: #e8eee6; stroke: #d8ded7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 59.616 412.128 
+L 530.784 412.128 
+Q 535.968 412.128 535.968 406.944 
+L 535.968 324.576 
+Q 535.968 319.392 530.784 319.392 
+L 59.616 319.392 
+Q 54.432 319.392 54.432 324.576 
+L 54.432 406.944 
+Q 54.432 412.128 59.616 412.128 
+z
+" clip-path="url(#p2a42e47401)" style="fill: #f6f3eb; stroke: #d8ded7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 59.616 521.568 
+L 530.784 521.568 
+Q 535.968 521.568 535.968 516.384 
+L 535.968 434.016 
+Q 535.968 428.832 530.784 428.832 
+L 59.616 428.832 
+Q 54.432 428.832 54.432 434.016 
+L 54.432 516.384 
+Q 54.432 521.568 59.616 521.568 
+z
+" clip-path="url(#p2a42e47401)" style="fill: #f6f3eb; stroke: #d8ded7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 295.2 198.131344 
+Q 295.2 201.02737 295.2 202.581755 
+" clip-path="url(#p2a42e47401)" style="fill: none; stroke: #416752; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 298 196.981755 
+L 295.2 202.581755 
+L 292.4 196.981755 
+z
+" clip-path="url(#p2a42e47401)" style="fill: #416752; stroke: #416752; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 295.2 307.571344 
+Q 295.2 310.46737 295.2 312.021755 
+" clip-path="url(#p2a42e47401)" style="fill: none; stroke: #416752; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 298 306.421755 
+L 295.2 312.021755 
+L 292.4 306.421755 
+z
+" clip-path="url(#p2a42e47401)" style="fill: #416752; stroke: #416752; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 295.2 417.011344 
+Q 295.2 419.90737 295.2 421.461755 
+" clip-path="url(#p2a42e47401)" style="fill: none; stroke: #416752; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 298 415.861755 
+L 295.2 421.461755 
+L 292.4 415.861755 
+z
+" clip-path="url(#p2a42e47401)" style="fill: #416752; stroke: #416752; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 21px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #293b35" x="59.04" y="41.76" transform="rotate(-0 59.04 41.76)">Where the GPU fits</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #65706b" x="59.04" y="65.952" transform="rotate(-0 59.04 65.952)">CUDA kNN regression · source-based execution flow</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #293b35" x="76.32" y="135.779187" transform="rotate(-0 76.32 135.779187)">1  CPU → GPU</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 10.3px; font-family: 'DejaVu Sans'; fill: #65706b" transform="translate(76.32 165.938391)">Training features N × D and query features Q × D</text>
+    <text style="font-size: 10.3px; font-family: 'DejaVu Sans'; fill: #65706b" transform="translate(76.32 181.385333)">Host-to-device copy; targets stay on the CPU</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #293b35" x="76.32" y="245.219187" transform="rotate(-0 76.32 245.219187)">2  GPU distance kernel</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 10.3px; font-family: 'DejaVu Sans'; fill: #65706b" transform="translate(76.32 275.378391)">Squared Euclidean distance for every query/training pair</text>
+    <text style="font-size: 10.3px; font-family: 'DejaVu Sans'; fill: #65706b" transform="translate(76.32 290.825333)">Naive loop or shared-memory tiling; 16 × 16 threads</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #293b35" x="76.32" y="354.659187" transform="rotate(-0 76.32 354.659187)">3  GPU → CPU</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 10.3px; font-family: 'DejaVu Sans'; fill: #65706b" transform="translate(76.32 384.818391)">Full Q × N float32 distance matrix</text>
+    <text style="font-size: 10.3px; font-family: 'DejaVu Sans'; fill: #65706b" transform="translate(76.32 400.265333)">Device-to-host copy: 4QN bytes</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #293b35" x="76.32" y="464.048406" transform="rotate(-0 76.32 464.048406)">4  CPU neighbour selection</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 10.3px; font-family: 'DejaVu Sans'; fill: #65706b" transform="translate(76.32 494.258391)">nth_element selects k neighbours per query</text>
+    <text style="font-size: 10.3px; font-family: 'DejaVu Sans'; fill: #65706b" transform="translate(76.32 509.991802)">Prediction = mean of their target values</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #293b35" x="59.04" y="547.488" transform="rotate(-0 59.04 547.488)">Memory grows with Q × N on both host and device.</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #65706b" x="59.04" y="565.92" transform="rotate(-0 59.04 565.92)">Source inspection only. No GPU timing or speedup claimed.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p2a42e47401">
+   <rect x="7.2" y="7.2" width="576" height="576"/>
+  </clipPath>
+ </defs>
+</svg>

@@ -1,6 +1,8 @@
+import career from './career.json';
 export type Lang = 'ru' | 'en';
 export const languages: Lang[] = ['ru', 'en'];
-export const updated = '2026-11-09';
+export const updated = career.updated;
+export const cvUrl = (lang: Lang) => `/cv/radmir-islamov-${lang}.pdf`;
 export const pick = <T>(lang: Lang, ru: T, en: T): T => lang === 'ru' ? ru : en;
 export const url = (lang: Lang, path = '') => `/${lang}/${path ? `${path.replace(/^\/+|\/+$/g, '')}/` : ''}`;
 export const person = {
@@ -20,22 +22,19 @@ export const person = {
   bio: {
     ru: [
       'Меня зовут Радмир Исламов. Я программист, окончил МИЭТ по направлению «Программная инженерия». После бакалавриата продолжил учёбу на магистерских программах ВШЭ и МФТИ.',
-      'Начинал с Java и системного программирования. Потом стал больше заниматься инфраструктурой: мониторингом, автоматизацией и надёжностью сервисов. Работал в VK и Т-Банке — с ИТ-поддержкой, инфраструктурой и SRE.',
-      'Сейчас изучаю машинное обучение. Одна из тем, которыми я занимаюсь, — распознавание старых тюркских текстов арабской графики. В ней меня интересует, как проверить результат модели, когда даже правильную транскрипцию получить непросто.',
+      'Начинал с Java, затем стал больше заниматься инфраструктурой. В VK и Т-Банке задачи сместились от написания кода к тому, что происходит с сервисом после запуска: как заметить сбой, найти его причину и сделать диагностику повторяемой. Так в моей работе появились мониторинг, автоматизация и SRE.',
+      'Сейчас развиваюсь в сторону машинного обучения, сохраняя интерес к инженерной стороне: данным, экспериментам и работе моделей в системе. Историю, особенно древнюю, люблю с детства. Интерес к языкам и старой письменности привёл к теме распознавания исторических тюркских текстов арабской графики. Здесь эти занятия сошлись в конкретной задаче: как проверить ответ модели, когда надёжное чтение самого источника ещё нужно установить.',
       'Ещё люблю древнюю историю, классическую литературу и языки. Часто возвращаюсь к сюжетам о судьбе и свободе воли: что человек может изменить, а что уже определено его происхождением или прошлыми поступками.'
     ],
     en: [
       'My name is Radmir Islamov. I’m a programmer with a bachelor’s degree in Software Engineering from MIET. After graduating, I continued my studies on master’s programmes at HSE University and MIPT.',
-      'I started with Java and systems programming, then moved towards infrastructure: monitoring, automation and service reliability. My work at VK and T-Bank involved IT support, infrastructure and SRE.',
-      'I now study machine learning. One topic I’m working on is recognising historical Turkic texts in Arabic script. I’m interested in how to check a model’s output when obtaining a reliable transcription is itself difficult.',
+      'I started with Java, then moved towards infrastructure. At VK and T-Bank, the focus shifted from writing code to what happens after a service starts: detecting a failure, finding its cause and making diagnosis repeatable. That brought monitoring, automation and SRE into my work.',
+      'I’m now moving towards machine learning while keeping an interest in its engineering side: data, experiments and models as parts of systems. I have enjoyed history, especially the ancient world, since childhood. An interest in languages and old writing systems led me to recognising historical Turkic texts in Arabic script. These interests meet in a concrete question: how can we check a model’s output when a reliable reading of the source still needs to be established?',
       'I also enjoy ancient history, classical literature and languages. I often return to stories about fate and free will: what people can change, and what has already been shaped by their origins or earlier choices.'
     ]
   }
 };
-export const experience = [
-  {company:'VK', role:{ru:'ИТ-поддержка и системное администрирование',en:'IT support and systems administration'}, text:{ru:'Работа с пользовательскими задачами и инфраструктурой. Этот опыт стал частью моего перехода от разработки к эксплуатации систем.',en:'Work with user support and infrastructure, forming part of my move from software development towards running systems.'}},
-  {company:'Т-Банк', role:{ru:'SRE',en:'Site reliability engineering'}, text:{ru:'Надёжность сервисов, мониторинг и автоматизация инфраструктурных задач. Дальше этот интерес продолжился в собственных стендах наблюдаемости.',en:'Service reliability, monitoring and infrastructure automation. I continued exploring these topics in my own observability testbeds.'}}
-];
+export const experience = career.experience;
 export const workAreas = [
   {title:{ru:'Разработка сервисов',en:'Service development'}, text:{ru:'Java и Python, REST API, обработка данных и отчёты. Пример — анализатор логов Nginx.',en:'Java and Python, REST APIs, data processing and reports. The Nginx log analyser is one example.'}, path:'projects/nginx-log-analyzer'},
   {title:{ru:'Инфраструктура и наблюдаемость',en:'Infrastructure and observability'}, text:{ru:'Linux, Docker, Kubernetes, HTTP-пробы и Prometheus. Интересует связь между измерениями и поведением сервиса.',en:'Linux, Docker, Kubernetes, HTTP probes and Prometheus. I’m interested in how measurements relate to service behaviour.'},path:'projects/sre-observability-platform'},
@@ -140,13 +139,12 @@ export const awards = [
   { year:'2025', title:{ru:'«Лучшая научная работа — 2025»',en:'“Best Scientific Work — 2025”'},
     text:{ru:'II место в секции «Технические науки» XX Международного научно-исследовательского конкурса МЦНС «Наука и Просвещение» за работу о потоковой обработке логов Nginx в Kubernetes.',en:'Second place in the Technical Sciences section of the 20th International Research Competition organised by the Science and Education International Centre for Scientific Cooperation, for a paper on streaming Nginx logs in Kubernetes.'} }
 ];
-export const education = [
-  { label: {ru:'МИЭТ',en:'MIET'}, period:'2021–2025', text:{ru:'Бакалавриат · Программная инженерия',en:'Bachelor’s degree · Software Engineering'} },
-  { label: {ru:'НИУ ВШЭ',en:'HSE University'}, period:'2025', text:{ru:'Магистерская программа «Исследования и предпринимательство в ИИ»',en:'Graduate programme · AI Research and Entrepreneurship'} },
-  { label: {ru:'МФТИ',en:'MIPT'}, period:'2026', text:{ru:'Магистерская программа «Машинный интеллект в финансах»',en:'Graduate programme · Machine Intelligence in Finance'} }
-];
+export const education = career.education;
 export const books = [
   {author:{ru:'Уильям Шекспир',en:'William Shakespeare'},title:{ru:'Макбет',en:'Macbeth'},note:{ru:'Больше всего люблю у Шекспира именно «Макбета». Интересно, насколько пророчество определяет его поступки, а насколько он сам превращает его в оправдание.',en:'My favourite Shakespeare play. I’m interested in how much the prophecy shapes Macbeth’s actions, and how much he turns it into an excuse.'},roman:'I'},
   {author:{ru:'Гомер',en:'Homer'},title:{ru:'Одиссея',en:'The Odyssey'},note:{ru:'Мне ближе «Илиады»: прежде всего историей возвращения домой. А эпизод с «Никто» и циклопом — один из любимых.',en:'I prefer it to the Iliad, especially for the story of returning home. The episode with “Nobody” and the Cyclops is a favourite.'},roman:'II'},
-  {author:{ru:'Г. Ф. Лавкрафт',en:'H. P. Lovecraft'},title:{ru:'Тень над Иннсмутом',en:'The Shadow over Innsmouth'},note:{ru:'Любимый текст Лавкрафта. Особенно цепляет попытка героя убежать от собственного происхождения и то, чем она заканчивается.',en:'My favourite Lovecraft story. What stays with me is the narrator’s attempt to escape his own origins, and where it leads.'},roman:'III'}
+  {author:{ru:'Г. Ф. Лавкрафт',en:'H. P. Lovecraft'},title:{ru:'Тень над Иннсмутом',en:'The Shadow over Innsmouth'},note:{ru:'Любимый текст Лавкрафта. Особенно цепляет попытка героя убежать от собственного происхождения и то, чем она заканчивается.',en:'My favourite Lovecraft story. What stays with me is the narrator’s attempt to escape his own origins, and where it leads.'},roman:'III'},
+  {author:{ru:'Уильям Шекспир',en:'William Shakespeare'},title:{ru:'Гамлет',en:'Hamlet'},note:{ru:'После «Макбета» — самая близкая мне пьеса Шекспира. Особенно люблю сам язык; к этим двум трагедиям хочется возвращаться.',en:'After Macbeth, this is the Shakespeare play closest to me. I especially love the language; these are two tragedies I want to return to.'},roman:'IV'},
+  {author:{ru:'Гомер',en:'Homer'},title:{ru:'Илиада',en:'The Iliad'},note:{ru:'Мне ближе «Одиссея», но из «Илиады» особенно запомнились смерть Патрокла и встреча Приама с Ахиллом. За участием богов здесь всё равно остаётся человеческое горе.',en:'I prefer the Odyssey, but Patroclus’s death and Priam’s meeting with Achilles have stayed with me. Behind the gods’ involvement, there is still human grief.'},roman:'V'},
+  {author:{ru:'Александр Солженицын',en:'Aleksandr Solzhenitsyn'},title:{ru:'Матрёнин двор',en:'Matryona’s Place'},note:{ru:'Один из рассказов, которые сильнее всего меня тронули. В списке моих любимых текстов он стоит рядом с гораздо более объёмными книгами.',en:'One of the stories that has moved me most. It belongs among my favourite texts alongside much longer books.'},roman:'VI'}
 ];

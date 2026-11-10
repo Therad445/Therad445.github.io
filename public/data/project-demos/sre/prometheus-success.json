@@ -1,0 +1,1 @@
+{"status":"success","data":{"resultType":"vector","result":[{"metric":{"__name__":"probe_success_total","instance":"127.0.0.1:19110","job":"portfolio_prober"},"value":[1794287196.495,"23"]}]}}

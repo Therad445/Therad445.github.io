@@ -1,0 +1,9 @@
+---
+import {pick,cvUrl,type Lang} from '../data/site';
+interface Props {lang:Lang; compact?:boolean}
+const {lang,compact=false}=Astro.props;
+---
+<div class:list={['resume-links',{'compact':compact}]}>
+<a class="resume-primary" href={cvUrl(lang)}>{pick(lang,'Резюме','Résumé')} <span>PDF · {lang.toUpperCase()}</span></a>
+{!compact&&<a href={cvUrl(lang==='ru'?'en':'ru')} lang={lang==='ru'?'en':'ru'}>{pick(lang,'English version','Русская версия')} <span>PDF</span></a>}
+</div>

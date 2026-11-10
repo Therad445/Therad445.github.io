@@ -26,7 +26,9 @@ The deployable output is `dist/`. The checks cover routes, internal links, langu
 
 ## Content
 
-- `src/data/site.ts` — biography, education, awards, research, publications, presentations, books and contacts, in both languages.
+- `src/data/site.ts` — biography, awards, research summaries, publications, presentations, books and contacts, in both languages.
+- `src/data/career.json` — shared RU/EN work experience, education, skills and CV project selection. Used by both the website and PDF generator. Employment dates contain years only.
+- `src/content/research/` — detailed research notes, status and substantive update dates. Add matching RU/EN entries.
 - `src/content/projects/` — Markdown project notes. Each translation has its own language-prefixed ID.
 - `src/content/notes/` — Markdown essays and personal notes, separate from project documentation. Add matching RU/EN files with the same slug.
 - `src/content.config.ts` — validated content schema. `noteTitle` is an optional conversational title; `date` is the note date, not the project completion date.
@@ -34,7 +36,11 @@ The deployable output is `dist/`. The checks cover routes, internal links, langu
 - `src/styles/global.css` — typography, layout and themes.
 - `src/styles/fonts.css`, `public/fonts/` — local WOFF2 fonts and their SIL Open Font Licences; no third-party font requests.
 - `DESIGN_NOTES.md` — visual references, palette, typography and font provenance.
-- `src/components/LogFlow.astro`, `LogDemo.astro` — a source-grounded data-flow diagram and a labelled browser-only demonstration using synthetic requests.
+- `src/components/LogFlow.astro`, `ProjectEvidence.astro` — source-grounded diagrams and real outputs from controlled synthetic-input runs.
+- `public/data/project-demos/` — source SHAs, actual outputs, limitations and reproduction scripts for Nginx and SRE; the CUDA figure documents code, not a GPU benchmark.
+- `public/cv/` — one-page RU/EN PDF résumés, linked from home, about and contact.
+- `src/pages/[lang]/rss.xml.ts` — language-specific note feeds; no external service.
+- `src/data/citations.ts`, `src/pages/citations/` — citation formatting and BibTeX downloads; metadata and coauthor credits are preserved.
 - `public/images/` — local portraits, an attributed public-domain historical illustration and the experimental figure. Image provenance is recorded in `SOURCES.md`.
 - `public/data/halfcheetah-summary.csv` — a snapshot of the public experiment data. Regenerate its figure with `python3 scripts/render-figures.py` (optional editorial dependency: Matplotlib; not needed for the Astro build).
 - `SOURCES.md` — public sources supporting the portfolio.
@@ -54,3 +60,20 @@ Private editorial notes, source biographical documents, credentials and developm
 ## Русский
 
 Двуязычный личный сайт и блог Радмира Исламова. Биография и краткие сведения находятся в `src/data/site.ts`, заметки — в `src/content/projects/`. После изменений в `main` сайт обновляется автоматически. Для предварительного просмотра используйте `npm run dev`; перед отправкой изменений выполните проверку, сборку и тесты из примера выше.
+
+## Regenerating résumés
+
+The PDFs are committed, so Python is not needed for the normal website build. After changing `src/data/career.json`:
+
+```bash
+python3 -m pip install reportlab fonttools brotli
+python3 scripts/render-cv.py
+```
+
+The script derives embedded fonts from the local licensed Golos Text WOFF2. Render both PDFs with Poppler and inspect every page before committing. Keep each CV to one page, preserve searchable text and links, and exclude private contacts and unverified metrics.
+
+## Editorial update, 10 November 2026
+
+The site has 36 localized HTML pages: 18 RU/EN pairs. Three detailed research notes and three new essays/technical notes were added; the reading selection contains six discussed favourites. RSS contains notes, not research status updates. Research pages display their own substantive update date. One source of truth for employment and education feeds the biography and PDFs.
+
+Do not describe the CUDA diagram as a performance measurement, the short local SRE run as production uptime, or the historical illustration as OCR evaluation data. The next image update requires original portraits and confirmed user-authored photographs; no gallery has been fabricated.

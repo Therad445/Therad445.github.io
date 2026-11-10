@@ -1,6 +1,17 @@
 ---
-import {publications,type Lang} from '../data/site';
+import {publications,pick,type Lang} from '../data/site';
+import {citation,bibtex} from '../data/citations';
 interface Props{lang:Lang}
 const {lang}=Astro.props;
 ---
-<div class="publication-list">{publications.map(p=><article class="publication"><h3><a href={p.href}>{p.title[lang]}</a></h3><p class="publication-meta">{p.year} · {p.authors[lang]} · {p.venue[lang]}<br/>{p.type[lang]}</p><p>{p.description[lang]}</p></article>)}</div>
+<div class="publication-list">{publications.map(p=><article class="publication"><h3><a href={p.href}>{p.title[lang]}</a></h3><p class="publication-meta">{p.year} · {p.authors[lang]} · {p.venue[lang]}<br/>{p.type[lang]}</p><p>{p.description[lang]}</p><div class="citation-actions"><button type="button" data-copy={citation(p,lang)}>{pick(lang,'Копировать ссылку','Copy citation')}</button><button type="button" data-copy={bibtex(p)}>BibTeX</button><a href={`/citations/${p.id}.bib`} download>{pick(lang,'Скачать .bib','Download .bib')}</a><span class="citation-status" aria-live="polite" data-success={pick(lang,'Скопировано','Copied')} data-failure={pick(lang,'Не удалось скопировать. Можно скачать .bib.','Could not copy. You can download the .bib file.')}></span></div></article>)}</div>
+<script>
+if(navigator.clipboard?.writeText)document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach(button=>{
+ button.classList.add('ready');
+ button.addEventListener('click',async()=>{
+  const status=button.parentElement?.querySelector<HTMLElement>('.citation-status');
+  try{await navigator.clipboard.writeText(button.dataset.copy||'');if(status)status.textContent=status.dataset.success||''}
+  catch{if(status)status.textContent=status.dataset.failure||''}
+ });
+});
+</script>

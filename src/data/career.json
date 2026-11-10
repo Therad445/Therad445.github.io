@@ -1,0 +1,176 @@
+{
+  "updated": "2026-11-10",
+  "name": {
+    "ru": "Радмир Исламов",
+    "en": "Radmir Islamov"
+  },
+  "headline": {
+    "ru": "Программная инженерия · SRE · ML Systems",
+    "en": "Software engineering · SRE · ML Systems"
+  },
+  "summary": {
+    "ru": "Разработка на Java и Python, инфраструктура и наблюдаемость. Опыт в VK и Т-Банке. Развиваюсь в сторону ML-инженерии; исследую оценку распознавания исторических текстов.",
+    "en": "Java and Python development, infrastructure and observability. Experience at VK and T-Bank. Moving towards ML engineering, with research interests in evaluating recognition of historical texts."
+  },
+  "contact": {
+    "email": "raraislamov@gmail.com",
+    "telegram": "https://t.me/Rad445",
+    "github": "https://github.com/Therad445",
+    "website": "https://therad445.github.io"
+  },
+  "experience": [
+    {
+      "company": {
+        "ru": "Т-Банк",
+        "en": "T-Bank"
+      },
+      "period": "2025–2026",
+      "role": {
+        "ru": "SRE / Observability, стажировка",
+        "en": "SRE / Observability intern"
+      },
+      "tasks": {
+        "ru": [
+          "Участвовал в дежурствах и разборе инцидентов: анализировал логи и метрики, уточнял причины сбоев и обновлял инструкции восстановления.",
+          "На предпродакшен-стенде сравнивал объём данных, задержки запросов и эксплуатационные риски при изменении настроек поисковой платформы.",
+          "Исправлял конфигурацию и развёртывание стенда; дорабатывал внутреннюю панель диагностики на C#/.NET — переходы к логам и инструкциям."
+        ],
+        "en": [
+          "Participated in on-call work and incident investigation: analysed logs and metrics, investigated failures and updated recovery instructions.",
+          "Compared data volume, query latency and operational risks when changing search-platform settings on a pre-production testbed.",
+          "Fixed testbed configuration and deployment issues; extended a C#/.NET diagnostic panel with links to logs and recovery instructions."
+        ]
+      },
+      "result": {
+        "ru": "Результат работы — методика и рекомендации по изменениям платформы, обновлённые инструкции и доработанная панель диагностики.",
+        "en": "Deliverables included an experiment methodology, recommendations for platform changes, updated runbooks and an improved diagnostic panel."
+      }
+    },
+    {
+      "company": {
+        "ru": "VK",
+        "en": "VK"
+      },
+      "period": "2024–2025",
+      "role": {
+        "ru": "Инженер технической поддержки L3",
+        "en": "L3 Technical Support Engineer"
+      },
+      "tasks": {
+        "ru": [
+          "Поддерживал внутренние сервисы и рабочие окружения Linux и Windows: службы, журналы, права доступа и сетевые подключения.",
+          "Разбирал причины недоступности сервисов: DNS, TCP, TLS и HTTP; работал с Nginx, PostgreSQL и средствами мониторинга.",
+          "Писал проверки состояния сервисов и зависимостей на Bash и Python, уточнял оповещения и инструкции по типовым сбоям."
+        ],
+        "en": [
+          "Supported internal services and Linux and Windows environments: services, logs, access permissions and network connections.",
+          "Investigated service availability issues across DNS, TCP, TLS and HTTP; worked with Nginx, PostgreSQL and monitoring tools.",
+          "Wrote Bash and Python checks for services and dependencies, and refined alerts and instructions for common failures."
+        ]
+      },
+      "result": {
+        "ru": "Результат работы — повторяемые диагностические проверки и инструкции для первичного разбора сбоев.",
+        "en": "Deliverables included repeatable diagnostic checks and instructions for initial fault investigation."
+      }
+    }
+  ],
+  "education": [
+    {
+      "label": {
+        "ru": "МФТИ",
+        "en": "MIPT"
+      },
+      "period": "2026",
+      "periodLabel": {
+        "ru": "Начало обучения — 2026",
+        "en": "Started in 2026"
+      },
+      "text": {
+        "ru": "Магистерская программа «Машинный интеллект в финансах»",
+        "en": "Master’s programme · Machine Intelligence in Finance"
+      },
+      "status": {
+        "ru": "Обучение продолжается; диплом ещё не получен.",
+        "en": "In progress; degree not yet awarded."
+      }
+    },
+    {
+      "label": {
+        "ru": "НИУ ВШЭ",
+        "en": "HSE University"
+      },
+      "period": "2025",
+      "periodLabel": {
+        "ru": "Начало обучения — 2025",
+        "en": "Started in 2025"
+      },
+      "text": {
+        "ru": "Магистерская программа «Исследования и предпринимательство в ИИ»",
+        "en": "Master’s programme · AI Research and Entrepreneurship"
+      },
+      "status": {
+        "ru": "Программа не завершена; диплом ещё не получен.",
+        "en": "Programme not completed; degree not yet awarded."
+      }
+    },
+    {
+      "label": {
+        "ru": "МИЭТ",
+        "en": "MIET"
+      },
+      "period": "2021–2025",
+      "periodLabel": {
+        "ru": "2021–2025",
+        "en": "2021–2025"
+      },
+      "text": {
+        "ru": "Бакалавриат · Программная инженерия",
+        "en": "Bachelor’s degree · Software Engineering"
+      },
+      "status": {
+        "ru": "Диплом получен. ВКР — модуль анализа логов Nginx.",
+        "en": "Degree awarded. Thesis: an Nginx log analysis module."
+      }
+    }
+  ],
+  "skills": [
+    {
+      "ru": "Разработка: Java, Python, Bash, SQL; Spring Boot, REST API, Git.",
+      "en": "Development: Java, Python, Bash, SQL; Spring Boot, REST APIs, Git."
+    },
+    {
+      "ru": "Инфраструктура: Linux, Docker, Kubernetes, Helm, GitLab CI/CD, Ansible.",
+      "en": "Infrastructure: Linux, Docker, Kubernetes, Helm, GitLab CI/CD, Ansible."
+    },
+    {
+      "ru": "Наблюдаемость и данные: Prometheus, Grafana, OpenSearch/Elasticsearch, Kafka, Flink, ClickHouse; PyTorch.",
+      "en": "Observability and data: Prometheus, Grafana, OpenSearch/Elasticsearch, Kafka, Flink, ClickHouse; PyTorch."
+    }
+  ],
+  "projects": [
+    {
+      "slug": "nginx-log-analyzer",
+      "title": "Nginx Log Analyzer",
+      "text": {
+        "ru": "Java / Spring Boot. Разбор журналов, статистический анализ и отчёты. Связан с ВКР МИЭТ и статьями об анализе логов.",
+        "en": "Java / Spring Boot. Log parsing, statistical analysis and reports. Connected to my MIET thesis and papers on log analysis."
+      }
+    },
+    {
+      "slug": "sre-observability-platform",
+      "title": "SRE Observability Platform",
+      "text": {
+        "ru": "Python, Prometheus, Docker, Kubernetes. Учебный стенд HTTP-проб и оценки доступности; код и конфигурация открыты.",
+        "en": "Python, Prometheus, Docker, Kubernetes. An educational testbed for HTTP probes and availability monitoring; open code and configuration."
+      }
+    },
+    {
+      "slug": "nstep-sac-reproducibility",
+      "title": "n-step Soft Actor-Critic",
+      "text": {
+        "ru": "PyTorch. Учебное сравнение трёх горизонтов возврата. Результаты доступны; один seed на конфигурацию ограничивает выводы.",
+        "en": "PyTorch. A course comparison of three return horizons. Results are available; one seed per configuration limits the conclusions."
+      }
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+global:
+  scrape_interval: 1s
+scrape_configs:
+  - job_name: portfolio_prober
+    static_configs:
+      - targets: ['127.0.0.1:19110']
+  - job_name: portfolio_sla
+    static_configs:
+      - targets: ['127.0.0.1:19111']
