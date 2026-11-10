@@ -17,5 +17,5 @@ const title=project.data.noteTitle||project.data.title;
 {project.data.slug==='nstep-sac-reproducibility'&&<ResultsFigure lang={lang}/>}
 <article class="prose"><Content/></article>
 {['nginx-log-analyzer','sre-observability-platform','cuda-rentsense-knn'].includes(project.data.slug)&&<ProjectEvidence lang={lang} slug={project.data.slug}/>}
-<aside class="project-details" aria-label={pick(lang,'О проекте','Project details')}><p>{project.data.title} · {project.data.status}</p><p>{project.data.tags.join(' · ')}</p><div class="quiet-links"><a href={project.data.repo}>{pick(lang,'Исходный код','Source code')}</a><a href={`${project.data.repo}/blob/main/README.md`}>README</a><a href={url(lang,'projects')}>{pick(lang,'Другие проекты','Other projects')}</a></div></aside>
+<aside class="project-details" aria-label={pick(lang,'О проекте','Project details')}><p>{project.data.title} · {project.data.status}</p><p>{project.data.tags.join(' · ')}</p><div class="quiet-links"><a href={project.data.repo}>{pick(lang,'Исходный код','Source code')}</a><a href={`${project.data.repo}/blob/${project.data.branch}/README.md`}>README</a><a href={url(lang,'projects')}>{pick(lang,'Другие проекты','Other projects')}</a></div></aside>
 </Layout>

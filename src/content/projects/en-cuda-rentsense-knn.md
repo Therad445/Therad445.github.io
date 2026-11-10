@@ -6,11 +6,12 @@ summary: "Three distance implementations, and why kernel time is not the whole j
 category: "GPU computing"
 status: "Educational implementation"
 year: "2025–2026"
-order: 2
+order: 7
 tags: ["C++", "CUDA", "CMake", "Python"]
 repo: "https://github.com/Therad445/cuda-rentsense-knn"
 date: "2026-11-09"
-featured: true
+featured: false
+selection: "additional"
 noteTitle: "kNN on the CPU and GPU"
 ---
 

@@ -11,10 +11,12 @@ export function getStaticPaths(){return languages.flatMap(lang=>sections.map(sec
 const lang=Astro.params.lang as Lang;
 const section=Astro.params.section!;
 const projects=(await getCollection('projects',({data})=>data.lang===lang)).sort((a,b)=>a.data.order-b.data.order);
+const selectedProjects=projects.filter(p=>p.data.selection==='primary');
+const additionalProjects=projects.filter(p=>p.data.selection==='additional');
 const notes=(await getCollection('notes',({data})=>data.lang===lang)).sort((a,b)=>b.data.date.localeCompare(a.data.date));
 const labels:Record<string,{title:string;intro:string}>={
  about:{title:pick(lang,'Обо мне','About me'),intro:pick(lang,'Немного об учёбе, работе и интересах.','A little about my studies, work and interests.')},
- projects:{title:pick(lang,'Проекты','Projects'),intro:pick(lang,'Несколько моих учебных и самостоятельных работ. У каждой есть код и небольшая заметка о том, как она устроена.','A few of my course and personal projects. Each has source code and a short note explaining how it works.')},
+ projects:{title:pick(lang,'Проекты','Projects'),intro:pick(lang,'Избранные работы: разработка сервисов, инженерия ML и эксперименты. В каждой — задача, решения, код и границы результата.','Selected work in service development, ML engineering and experiments. Each includes the problem, design decisions, code and limits of the results.')},
  research:{title:pick(lang,'Исследования','Research'),intro:pick(lang,'Текущие исследования, опубликованные статьи и материалы студенческих конференций.','Current research, published articles and material from student conferences.')},
  writing:{title:pick(lang,'Заметки и статьи','Notes and articles'),intro:pick(lang,'О программировании, ИИ и культуре. Разборы проектов, вопросы и мысли по ходу работы.','On programming, AI and culture: project walkthroughs, questions and thoughts along the way.')},
  library:{title:pick(lang,'Книги и другие интересы','Books and other interests'),intro:pick(lang,'Люблю классическую литературу, древнюю историю и языки. Ниже — несколько особенно близких мне книг.','I enjoy classical literature, ancient history and languages. Here are a few books that mean a lot to me.')},
@@ -41,7 +43,10 @@ const info=labels[section];
 <aside class="personal-note"><img src="/images/radmir-outdoors.jpg" width="150" height="150" loading="lazy" decoding="async" alt={pick(lang,'Радмир Исламов — уличный портрет','Radmir Islamov — an outdoor portrait')}/><div><h2>{pick(lang,'За пределами работы','Beyond work')}</h2><p>{person.bio[lang][3]}</p><p>{pick(lang,'В 2024 году прошёл обучение в фотошколе inFocus при МИЭТ.','In 2024, I completed a course at MIET’s inFocus photography school.')}</p><a href={url(lang,'library')}>{pick(lang,'Книги и другие интересы','Books and other interests')} <span aria-hidden="true">→</span></a></div></aside>
 
 </div></>}
-{section==='projects'&&<ul class="post-list">{projects.map(p=><li class="post-preview"><article><h2><a href={url(lang,`projects/${p.data.slug}`)}>{p.data.title}</a></h2><p>{p.data.summary}</p><div class="project-tools">{p.data.tags.join(' · ')}<br/>{p.data.status}</div><p class="quiet-links"><a href={url(lang,`projects/${p.data.slug}`)}>{pick(lang,'О проекте','Read the note')}</a><a href={p.data.repo}>{pick(lang,'Код на GitHub','Code on GitHub')}</a></p></article></li>)}</ul>}
+{section==='projects'&&<>
+<ul class="post-list">{selectedProjects.map(p=><li class="post-preview"><article><p class="eyebrow">{p.data.category}</p><h2><a href={url(lang,`projects/${p.data.slug}`)}>{p.data.title}</a></h2><p>{p.data.summary}</p><div class="project-tools">{p.data.tags.join(' · ')}<br/>{p.data.status}</div><p class="quiet-links"><a href={url(lang,`projects/${p.data.slug}`)}>{pick(lang,'О проекте','Read the note')}</a><a href={p.data.repo}>{pick(lang,'Код на GitHub','Code on GitHub')}</a></p></article></li>)}</ul>
+<details class="additional-projects"><summary>{pick(lang,'Ещё два небольших проекта: наблюдаемость и CUDA','Two smaller projects: observability and CUDA')}</summary><ul class="work-links">{additionalProjects.map(p=><li><a href={url(lang,`projects/${p.data.slug}`)}>{p.data.title}</a><span>{p.data.summary}</span></li>)}</ul></details>
+</>}
 {section==='research'&&<>
 {research.map(r=><section class="research-item" id={r.id}><h2><a href={url(lang,`research/${r.id}`)}>{r.title[lang]}</a></h2><p class="status">{r.status[lang]}</p><p>{r.text[lang]}</p><p>{r.method[lang]}</p><p class="research-limit">{r.limit[lang]}</p><p class="quiet-links"><a href={url(lang,`research/${r.id}`)}>{pick(lang,'Вопрос, результаты и следующий этап','Question, progress and next step')} →</a></p></section>)}
 <section class="publications" id="publications"><h2>{pick(lang,'Опубликованные статьи','Published articles')}</h2><Publications lang={lang}/><p class="translation-note">{pick(lang,'Журнальная статья и две работы в материалах конференций и конкурсов. Все тексты опубликованы на русском языке.','A journal article and two papers in conference and competition proceedings. All three are in Russian; the titles above are translated.')}</p></section>

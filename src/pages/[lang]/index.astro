@@ -8,6 +8,7 @@ import {languages,person,pick,url,researchFocus,updated,type Lang} from '../../d
 export function getStaticPaths(){return languages.map(lang=>({params:{lang}}))}
 const lang=Astro.params.lang as Lang;
 const notes=(await getCollection('notes',({data})=>data.lang===lang)).sort((a,b)=>b.data.date.localeCompare(a.data.date));
+const homeProjects=(await getCollection('projects',({data})=>data.lang===lang&&data.featured&&data.slug!=='nginx-log-analyzer')).sort((a,b)=>a.data.order-b.data.order);
 ---
 <Layout lang={lang} type="ProfilePage" wide>
 <section class="home-intro home-portrait">
@@ -32,7 +33,7 @@ const notes=(await getCollection('notes',({data})=>data.lang===lang)).sort((a,b)
     <div><p class="eyebrow">Java / Spring Boot / {pick(lang,'анализ данных','data analysis')}</p><h3><a href={url(lang,'projects/nginx-log-analyzer')}>Nginx Log Analyzer</a></h3><p>{pick(lang,'Сервис превращает серверные логи в показатели, по которым можно заметить ошибки и необычную активность. Чтение, разбор, анализ и отчёт разделены на самостоятельные части.','A service that turns server logs into metrics for spotting errors and unusual activity. Reading, parsing, analysis and reporting are separate parts of the implementation.')}</p><p class="work-evidence">{pick(lang,'ВКР МИЭТ, 2025 · регистрация программы · две статьи по теме','MIET undergraduate thesis, 2025 · software registration · two related articles')}</p><div class="quiet-links"><a href={url(lang,'projects/nginx-log-analyzer')}>{pick(lang,'Разбор и демонстрация','Walkthrough and demo')} <span aria-hidden="true">→</span></a><a href="https://github.com/Therad445/nginx-log-analyzer">GitHub</a></div></div>
     <LogFlow lang={lang} compact/>
   </div>
-  <ul class="work-links"><li><a href={url(lang,'projects/sre-observability-platform')}>SRE Observability Stack</a><span>{pick(lang,'HTTP-пробы, Prometheus и доступность сервиса','HTTP probes, Prometheus and service availability')}</span></li><li><a href={url(lang,'projects/nstep-sac-reproducibility')}>n-step Soft Actor-Critic</a><span>{pick(lang,'Учебный эксперимент: код, график и ограничения','A course experiment: code, a chart and limitations')}</span></li></ul>
+  <ul class="work-links">{homeProjects.map(p=><li><a href={url(lang,`projects/${p.data.slug}`)}>{p.data.title}</a><span>{p.data.summary}</span></li>)}</ul>
 </section>
 <section class="research-overview" aria-labelledby="research-title">
   <div class="section-heading"><h2 id="research-title">{pick(lang,'Сейчас исследую','Current research')}</h2><time datetime={updated}>{pick(lang,'Ноябрь 2026','November 2026')}</time></div>

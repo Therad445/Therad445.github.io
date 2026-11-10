@@ -87,6 +87,9 @@ main { padding-top: 48px; }
 .project-details { border-top: 1px solid var(--line); margin-top: 38px; padding-top: 22px; font: 14px/1.8 var(--sans); }
 .project-details p { margin-bottom: 10px; }
 .project-tools { margin: 13px 0; }
+.additional-projects { border-top: 1px solid var(--line); margin-top: 36px; padding-top: 22px; }
+.additional-projects summary { cursor: pointer; font: 16px/1.7 var(--sans); color: var(--link); }
+.additional-projects .work-links { margin-top: 18px; }
 .research-item { margin: 35px 0 40px; }
 .research-item h2 { margin: 0 0 8px; }
 .research-item .status { margin-bottom: 15px; }

@@ -1,0 +1,30 @@
+PageRank example verification — 2026-11-10
+
+Source: https://github.com/Therad445/graph_analytics_pagerank/tree/09df690199015931392c1e23f9bc9ba9c49647c7
+Compiler: g++ (Debian 14.2.0-19) 14.2.0
+Unmodified source. CMake was unavailable, so the single C++ translation unit was compiled directly.
+
+Commands (repository root):
+g++ -std=c++17 -O3 -Wall -Wextra -Wpedantic -pthread src/main.cpp -o pagerank-audit
+./pagerank-audit --input data/edges.csv --output result.csv --workdir audit-work --iterations 20 --threads 2 --partitions 4 --memory-mb 128
+python3 scripts/verify_small.py --edges data/edges.csv --result result.csv --iterations 20
+
+Input:
+from,to
+1,2
+2,3
+3,1
+4,1
+
+Output:
+vertex,rank
+1,0.32988301640344397
+2,0.32613696429838668
+3,0.30648001929816937
+4,0.037500000000000006
+
+Independent Python comparison:
+max_abs_error=0.000e+00
+rank_sum=1.000000000000000
+
+Scope: a small correctness example only. No large-graph performance, RAM consumption or parallel speedup benchmark was performed.

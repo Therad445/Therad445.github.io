@@ -6,11 +6,12 @@ summary: "HTTP-пробы, Prometheus и расчёт доступности с�
 category: "SRE / Observability"
 status: "Учебный стенд"
 year: "2025–2026"
-order: 1
+order: 6
 tags: ["Python", "Prometheus", "Kubernetes", "Docker"]
 repo: "https://github.com/Therad445/sre-observability-platform"
 date: "2026-11-09"
-featured: true
+featured: false
+selection: "additional"
 noteTitle: "Небольшой стенд наблюдаемости"
 ---
 

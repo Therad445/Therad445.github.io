@@ -77,3 +77,7 @@
 ### Career wording revision — 10 November 2026
 
 Career descriptions were selected from the owner-supplied Overleaf archive, especially the DevOps MWS and Referral versions, and cross-checked against the owner's explanations. T-Bank entries cover Elasticsearch experiments, reproducibility, diagnostic tooling and configuration change control. VK entries cover diagnostic automation, workstation/service-access troubleshooting and workplace provisioning. These are owner-provided biographical statements, not independent employer verification.
+
+### Portfolio selection — 10 November 2026
+
+The public GitHub inventory and 27 shortlisted repository reviews informed the revised selection. See `PROJECT_SELECTION.md` for criteria, immutable source links and the scope of checks. Four bilingual project notes were added: Update Tracker, MLflow/FastAPI Service, Text-to-Mask and PageRank. The latter includes an executed small-graph check in `public/data/project-demos/pagerank/verification.txt`. Text-to-Mask counts are transcribed from its saved five-case CSV; the source images are third-party examples and were not copied into the site. Existing Nginx and SAC evidence remains available. No production metrics or new GPU benchmark results were invented.

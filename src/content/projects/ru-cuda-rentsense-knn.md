@@ -6,11 +6,12 @@ summary: "Три реализации расчёта расстояний и п�
 category: "GPU computing"
 status: "Учебная реализация"
 year: "2025–2026"
-order: 2
+order: 7
 tags: ["C++", "CUDA", "CMake", "Python"]
 repo: "https://github.com/Therad445/cuda-rentsense-knn"
 date: "2026-11-09"
-featured: true
+featured: false
+selection: "additional"
 noteTitle: "kNN на CPU и GPU"
 ---
 

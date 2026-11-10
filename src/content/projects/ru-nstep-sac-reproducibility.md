@@ -6,7 +6,7 @@ summary: "Сравнение n = 1, 3 и 5 в учебном экспериме�
 category: "Reinforcement learning"
 status: "Завершённый учебный эксперимент"
 year: "2025–2026"
-order: 3
+order: 5
 tags: ["Python", "PyTorch", "Gymnasium", "MuJoCo"]
 repo: "https://github.com/Therad445/nstep-sac-reproducibility"
 date: "2026-11-09"

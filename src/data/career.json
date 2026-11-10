@@ -151,19 +151,19 @@
       }
     },
     {
-      "slug": "sre-observability-platform",
-      "title": "SRE Observability Platform",
+      "slug": "update-tracker-bot",
+      "title": "Update Tracker",
       "text": {
-        "ru": "Python, Prometheus, Docker, Kubernetes. Учебный стенд HTTP-проб и оценки доступности; код и конфигурация открыты.",
-        "en": "Python, Prometheus, Docker, Kubernetes. An educational testbed for HTTP probes and availability monitoring; open code and configuration."
+        "ru": "Java / Spring Boot. Два сервиса, подписки в PostgreSQL, миграции Liquibase и интеграционные тесты с Testcontainers.",
+        "en": "Java / Spring Boot. Two services, PostgreSQL subscriptions, Liquibase migrations and Testcontainers integration tests."
       }
     },
     {
-      "slug": "nstep-sac-reproducibility",
-      "title": "n-step Soft Actor-Critic",
+      "slug": "ml-serving-monitoring",
+      "title": "MLflow / FastAPI Service",
       "text": {
-        "ru": "PyTorch. Учебное сравнение трёх горизонтов возврата. Результаты доступны; один seed на конфигурацию ограничивает выводы.",
-        "en": "PyTorch. A course comparison of three return horizons. Results are available; one seed per configuration limits the conclusions."
+        "ru": "Инференс модели, валидация признаков, смена версии, метрики Prometheus и отчёты о дрейфе данных.",
+        "en": "Model inference, feature validation, model switching, Prometheus metrics and data-drift reports."
       }
     }
   ]
